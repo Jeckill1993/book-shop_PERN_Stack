@@ -9,11 +9,11 @@ class DeviceController {
 
             const { name, price, brandId, typeId, info } = req.body;
             const { img } = req.files; // install package express-fileupload and register it in index.js - (app.use(fileUpload({})))
-            let fileName = uuid.v4 + '.jpg';
+            let fileName = uuid.v4() + ".jpg";
 
-            img.mv(path.resolve(__dirname, '..', 'static', fileName));
+            img.mv(path.resolve(__dirname, '..' ,'static', fileName));
 
-            const device = Device.create({ name, price, brandId, typeId, img: fileName });
+            const device = await Device.create({ name, price, brandId, typeId, img: fileName });
             return res.json(device);
 
         } catch (err) {
@@ -22,7 +22,7 @@ class DeviceController {
     }
 
     async getAll(req, res) {
-        return res.json('here');
+        return res.json(__dirname);
     }
 
     async getOne(req, res) {
