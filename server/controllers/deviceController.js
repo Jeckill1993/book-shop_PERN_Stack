@@ -6,7 +6,6 @@ const path = require('path');
 class DeviceController {
     async create(req, res, next) {
         try {
-
             let { name, price, brandId, typeId, info } = req.body;
             const { img } = req.files; // install package express-fileupload and register it in index.js - (app.use(fileUpload({})))
             let fileName = uuid.v4() + ".jpg";
