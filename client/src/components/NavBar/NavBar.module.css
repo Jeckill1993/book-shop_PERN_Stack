@@ -1,0 +1,25 @@
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menuLink {
+    margin-left: 40px;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    transition: 0.4s;
+}
+
+.menuLink:hover {
+    color: #1E90FFFF;
+}
+
+.menuLink.active {
+    text-decoration: underline;
+}
+
+
+

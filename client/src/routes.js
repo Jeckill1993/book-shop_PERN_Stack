@@ -1,10 +1,10 @@
 import {
     ADMIN_ROUTE,
-    BASKET_ROUTE,
+    BASKET_ROUTE, CATALOG_ROUTE,
     DEFAULT_ROUTE,
     DEVICE_ROUTE, INCORRECT_ROUTE,
     LOGIN_ROUTE,
-    REGISTRATION_ROUTE,
+    REGISTRATION_ROUTE, SALES_ROUTE,
     SHOP_ROUTE
 } from "./utils/const";
 import { Navigate } from "react-router-dom";
@@ -14,13 +14,18 @@ import Basket from "./pages/Basket";
 import Shop from "./pages/Shop";
 import DevicePage from "./pages/DevicePage";
 import Auth from "./pages/Auth";
+import Sales from "./pages/Sales";
+import Catalog from "./pages/Catalog";
 
 
-export const authRoutes = [
+export const adminRoutes = [
     {
         path: ADMIN_ROUTE,
         component: <AdminPanel/>,
     },
+]
+
+export const authRoutes = [
     {
         path: BASKET_ROUTE,
         component: <Basket/>,
@@ -47,6 +52,14 @@ export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
         component: <Auth/>,
+    },
+    {
+        path: SALES_ROUTE,
+        component: <Sales/>,
+    },
+    {
+        path: CATALOG_ROUTE,
+        component: <Catalog/>,
     },
     {
         path: INCORRECT_ROUTE,

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { authRoutes, publicRoutes } from "../routes";
+import {adminRoutes, authRoutes, publicRoutes} from "../routes";
 import {useContext} from "react";
 import {Context} from "../index";
 
@@ -13,6 +13,9 @@ const AppRouter = () => {
                     return <Route key={path} path={path} element={component} exact/>
                 }) }
                 { publicRoutes.map(({ path, component }) => {
+                    return <Route key={path} path={path} element={component} exact/>
+                }) }
+                { user.isAdmin && adminRoutes.map(({ path, component }) => {
                     return <Route key={path} path={path} element={component} exact/>
                 }) }
             </Routes>
