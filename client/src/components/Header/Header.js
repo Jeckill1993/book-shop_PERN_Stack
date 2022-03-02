@@ -1,15 +1,18 @@
 import {NavLink} from "react-router-dom";
 import {SHOP_ROUTE} from "../../utils/const";
 import NavBar from "../NavBar";
+import classes from "./Header.module.css";
 
 const Header = () => {
     return (
-        <header>
+        <header className={classes.header}>
             <div className="wrapper">
-                <NavLink to={SHOP_ROUTE}>
-                    <img src="" alt="logo"/>
-                </NavLink>
-                <NavBar />
+                <div className="container-flex">
+                    <NavLink className={classes.logo} to={SHOP_ROUTE}>
+                        <img src="../../assets/img/logo.jpg" alt="logo"/>
+                    </NavLink>
+                    <NavBar />
+                </div>
             </div>
         </header>
     );
