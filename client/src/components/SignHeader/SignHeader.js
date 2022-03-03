@@ -5,7 +5,6 @@ import classes from './SignHeader.module.css';
 
 
 const SignHeader = () => {
-
     return (
         <div className={classes.signBox}>
             <NavLink className={`${classes.signLink} ${classes.signLink_primary}`} to={REGISTRATION_ROUTE}>Sign Up</NavLink>

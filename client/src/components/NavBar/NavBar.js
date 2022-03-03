@@ -3,10 +3,12 @@ import {ADMIN_ROUTE, CATALOG_ROUTE, PROFILE_ROUTE, SALES_ROUTE} from "../../util
 import {useContext} from "react";
 import {Context} from "../../index";
 import SignHeader from "../SignHeader/SignHeader";
+import {observer} from "mobx-react-lite";
 
 import classes from "./NavBar.module.css";
 
-const NavBar = () => {
+
+const NavBar = observer(() => {
     const { user } = useContext(Context);
 
     return (
@@ -19,6 +21,6 @@ const NavBar = () => {
             { user.isAuth && user.isAdmin ? <NavLink to={ADMIN_ROUTE}>Admin Panel</NavLink> : '' }
         </nav>
     );
-}
+})
 
 export default NavBar;

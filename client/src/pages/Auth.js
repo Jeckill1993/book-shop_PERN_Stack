@@ -1,9 +1,8 @@
+import AuthForm from "../components/AuthForm/AuthForm";
 
 const Auth = () => {
     return (
-        <div className="main">
-            <h1>Auth</h1>
-        </div>
+        <AuthForm />
     );
 }
 
