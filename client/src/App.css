@@ -102,6 +102,12 @@ img {
     align-items: center;
 }
 
+.catalog-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 @media screen and (max-width: 1200px) {
   .wrapper {
     padding: 0 35px;

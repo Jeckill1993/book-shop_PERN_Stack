@@ -11,12 +11,24 @@ import classes from "./NavBar.module.css";
 const NavBar = observer(() => {
     const { user } = useContext(Context);
 
+    const logOut = () => {
+        user.setUser({});
+        user.setIsAuth(false);
+        if (user.role === 'ADMIN') {
+            user.setIsAdmin(false);
+        }
+
+    }
+
     return (
         <nav className={classes.menu}>
             <NavLink className={classes.menuLink} to={CATALOG_ROUTE}>Catalog</NavLink>
             <NavLink className={classes.menuLink} to={SALES_ROUTE}>Sales</NavLink>
             { user.isAuth
-                    ? <NavLink className={classes.menuLink} to={PROFILE_ROUTE}>Profile</NavLink>
+                    ? <div>
+                        <NavLink className={classes.menuLink} to={PROFILE_ROUTE}>Profile</NavLink>
+                        <button onClick={ () => {logOut()} }>Exit</button>
+                      </div>
                     : <SignHeader/> }
             { user.isAuth && user.isAdmin ? <NavLink to={ADMIN_ROUTE}>Admin Panel</NavLink> : '' }
         </nav>
