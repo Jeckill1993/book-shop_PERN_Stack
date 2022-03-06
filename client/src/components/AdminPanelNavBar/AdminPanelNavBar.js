@@ -1,12 +1,13 @@
 import classes from './AdminPanelNavBar.module.css';
-import {NavLink} from "react-router-dom";
 
 
-const AdminPanelNavBar = () => {
+const AdminPanelNavBar = ( { setActiveSection }) => {
 
     return (
         <div>
-
+            <button onClick={() => {setActiveSection('devices')}}>Devices</button>
+            <button onClick={() => {setActiveSection('types')}}>Types</button>
+            <button onClick={() => {setActiveSection('brands')}}>Brands</button>
         </div>
     );
 }

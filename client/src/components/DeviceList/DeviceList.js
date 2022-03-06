@@ -8,6 +8,8 @@ import DeviceItem from "../DeviceItem/DeviceItem";
 const DeviceList = observer(() => {
     const { device } = useContext(Context);
 
+    console.log('device here');
+
     return (
         <div className={"catalog-top-bar"}>
             <ul>
