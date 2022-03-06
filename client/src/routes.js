@@ -3,7 +3,7 @@ import {
     BASKET_ROUTE, CATALOG_ROUTE,
     DEFAULT_ROUTE,
     DEVICE_ROUTE, INCORRECT_ROUTE,
-    LOGIN_ROUTE,
+    LOGIN_ROUTE, PROFILE_ROUTE,
     REGISTRATION_ROUTE, SALES_ROUTE,
     SHOP_ROUTE
 } from "./utils/const";
@@ -16,6 +16,7 @@ import DevicePage from "./pages/DevicePage";
 import Auth from "./pages/Auth";
 import Sales from "./pages/Sales";
 import Catalog from "./pages/Catalog";
+import Profile from "./pages/Profile";
 
 
 export const adminRoutes = [
@@ -26,6 +27,10 @@ export const adminRoutes = [
 ]
 
 export const authRoutes = [
+    {
+        path: PROFILE_ROUTE,
+        component: <Profile/>,
+    },
     {
         path: BASKET_ROUTE,
         component: <Basket/>,

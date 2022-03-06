@@ -17,6 +17,7 @@ const NavBar = observer(() => {
         if (user.role === 'ADMIN') {
             user.setIsAdmin(false);
         }
+        localStorage.setItem('token', '');
 
     }
 
@@ -30,7 +31,7 @@ const NavBar = observer(() => {
                         <button onClick={ () => {logOut()} }>Exit</button>
                       </div>
                     : <SignHeader/> }
-            { user.isAuth && user.isAdmin ? <NavLink to={ADMIN_ROUTE}>Admin Panel</NavLink> : '' }
+            { user.isAuth && user.isAdmin ? <NavLink className={classes.menuLink} to={ADMIN_ROUTE}>Admin Panel</NavLink> : '' }
         </nav>
     );
 })

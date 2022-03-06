@@ -13,13 +13,15 @@ import Loading from "./components/Loading/Loading";
 const App = observer(() => {
     const {user} = useContext(Context);
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         checkAuth().then((data) => {
             user.setUser(data);
             user.setIsAuth(true);
-            if (user.role === 'ADMIN') {
+            if (data.role === 'ADMIN') {
                 user.setIsAdmin(true);
             }
+
         }).finally(() => {
             setLoading(false);
         })
