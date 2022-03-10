@@ -20,16 +20,20 @@ const CreateBrand = ({onHide, isEdit}) => {
     }
 
     return (
-        <div>
-            <form>
-                <input type={'text'} placeholder={'Enter brand'} value={value}
-                    onChange={ (e) => {setValue(e.target.value)} }/>
-            </form>
-            <div>
-                {isEdit
-                    ? <button onClick={() => {onHide()}}>Edit</button>
-                    : <button onClick={() => {addBrand()}}>Add</button>}
-                <button onClick={() => {onHide()}}>Exit</button>
+        <div className={classes.modalOverlay}>
+            <div className={classes.modalContainer}>
+                <form>
+                    <div className={classes.modalFieldsetFull}>
+                        <input className={classes.modalField} type={'text'} placeholder={'Enter brand'} value={value}
+                               onChange={ (e) => {setValue(e.target.value)} }/>
+                    </div>
+                </form>
+                <div className={classes.modalBtnRow}>
+                    {isEdit
+                        ? <button className={classes.modalSecondaryBtn} onClick={() => {onHide()}}>Edit</button>
+                        : <button className={classes.modalSecondaryBtn} onClick={() => {addBrand()}}>Add</button>}
+                    <button className={classes.modalPrimaryBtn} onClick={() => {onHide()}}>Exit</button>
+                </div>
             </div>
         </div>
     )

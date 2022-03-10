@@ -56,53 +56,76 @@ const CreateDevice = observer(({onHide, isEdit}) => {
     }
 
     return (
-        <div>
-            <form>
-                <div>
-                    <select onClick={ (e) => {
-                        setTypeId(parseInt(e.target.value));
-                    } }>
-                        {device.types.map((type) => {
-                            return <option key={type.id} value={type.id}>{type.name}</option>
-                        })}
-                    </select>
-                    <select onClick={ (e) => {
-                        setBrandId(parseInt(e.target.value));
-                    } }>
-                        {device.brands.map((brand) => {
-                            return <option key={brand.id} value={brand.id}>{brand.name}</option>
-                        })}
-                    </select>
-                </div>
-                <input type={"text"} placeholder={"Enter name of device"} value={name}
-                       onChange={ (e) => {setName(e.target.value)} }/>
-                <input type={"text"} placeholder={"Enter price of device"} value={price}
-                       onChange={ (e) => {setPrice(parseInt(e.target.value))} }/>
-                <input type={"file"} onChange={ selectFile }/>
-                <div>
-                    <h3>Characteristic</h3>
-                    {
-                        info.map((item) => {
-                            return <div key={item.number}>
-                                <input type={"text"} value={item.title} onChange={ (e) => {
-                                    changeInfo('title', e.target.value, item.number)} } />
-                                <input type={"text"} value={item.description} onChange={ (e) => {
-                                    changeInfo('description', e.target.value, item.number)} }/>
-                                <button onClick={ () => {removeIndo(item.number)} }>Delete The Option</button>
-                            </div>
-                        })
-                    }
-                    <button type={"button"} onClick={ () => {addInfo()} }>Add Option</button>
-                </div>
+        <div className={classes.modalOverlay}>
+            <div className={classes.modalContainer}>
+                <form>
+                    <div className={classes.modalBoxFlex}>
+                        <div className={classes.modalFieldset}>
+                            <select className={classes.modalField} onClick={ (e) => {
+                                setTypeId(parseInt(e.target.value));
+                            } }>
+                                {device.types.map((type) => {
+                                    return <option key={type.id} value={type.id}>{type.name}</option>
+                                })}
+                            </select>
+                        </div>
+                        <div className={classes.modalFieldset}>
+                            <select className={classes.modalField} onClick={ (e) => {
+                                setBrandId(parseInt(e.target.value));
+                            } }>
+                                {device.brands.map((brand) => {
+                                    return <option key={brand.id} value={brand.id}>{brand.name}</option>
+                                })}
+                            </select>
+                        </div>
+                    </div>
+                    <div className={classes.modalBoxFlex}>
+                        <div className={classes.modalFieldset}>
+                            <input className={classes.modalField} type={"text"}
+                                   placeholder={"Enter name of device"} value={name}
+                                   onChange={ (e) => {setName(e.target.value)} }/>
+                        </div>
+                        <div className={classes.modalFieldset}>
+                            <input className={classes.modalField} type={"text"}
+                                   placeholder={"Enter price of device"} value={price}
+                                   onChange={ (e) => {setPrice(parseInt(e.target.value))} }/>
+                        </div>
+                    </div>
+                    <div className={classes.modalFileContainer}>
+                        <input type={"file"} onChange={ selectFile }/>
+                    </div>
+                    <div className={classes.modalOptionsBox}>
+                        <h4 className={classes.modalOptionsTitle}>Characteristic</h4>
+                        {
+                            info.map((item) => {
+                                return <div className={classes.modalOptionRow} key={item.number}>
+                                    <div className={classes.modalOptionFieldset}>
+                                        <input type={"text"} value={item.title} onChange={ (e) => {
+                                            changeInfo('title', e.target.value, item.number)} }
+                                               className={classes.modalOptionField} placeholder={"title"} />
+                                    </div>
+                                    <div className={classes.modalOptionFieldset}>
+                                        <input type={"text"} value={item.description} onChange={ (e) => {
+                                            changeInfo('description', e.target.value, item.number)} }
+                                               className={classes.modalOptionField} placeholder={"description"} />
+                                    </div>
+                                    <button className={classes.btnDeleteOption} onClick={ () => {removeIndo(item.number)} } />
+                                </div>
+                            })
+                        }
+                        <button className={classes.btnAddOption} type={"button"} onClick={ () => {addInfo()} }>Add Option</button>
+                    </div>
 
-            </form>
-            <div>
-                {isEdit
-                    ? <button onClick={ () => {onHide()} }>Edit</button>
-                    : <button onClick={ () => {addDevice()} }>Add</button>}
-                <button onClick={ () => {onHide()} }>Exit</button>
+                </form>
+                <div className={classes.modalBtnRow}>
+                    {isEdit
+                        ? <button className={classes.modalSecondaryBtn} onClick={ () => {onHide()} }>Edit</button>
+                        : <button className={classes.modalSecondaryBtn} onClick={ () => {addDevice()} }>Add</button>}
+                    <button className={classes.modalPrimaryBtn} onClick={ () => {onHide()} }>Exit</button>
+                </div>
             </div>
         </div>
+
     )
 })
 
