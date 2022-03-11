@@ -44,7 +44,6 @@ export const deleteBrand = async () => {
 
 
 export const createDevice = async ( device ) => {
-    debugger;
     const { data } = await authHost.post('api/device/create', device);
     return data;
 }

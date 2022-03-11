@@ -28,29 +28,18 @@ const CreateDevice = observer(({onHide, isEdit}) => {
     }
 
     const addDevice = () => {
-
-        const formData = {
-            'name': name,
-            'price': `${price}`,
-            'img': file,
-            'brandId': `${brandId}`,
-            'typeId': `${typeId}`,
-            'info': JSON.stringify(info),
-        }
-
-        // const formData = new FormData();
-        // formData.append('name', name);
-        // formData.append('price', `${price}`);
-        // formData.append('img', file);
-        // formData.append('brandId', `${brandId}`);
-        // formData.append('typeId', `${typeId}`);
-        // formData.append('info', JSON.stringify(info));
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('price', `${price}`);
+        formData.append('img', file);
+        formData.append('brandId', `${brandId}`);
+        formData.append('typeId', `${typeId}`);
+        formData.append('info', JSON.stringify(info));
 
         createDevice(formData).then((data) => {
-
             onHide();
             fetchDevices().then((data) => {
-                device.setDevices(data);
+                device.setDevices(data.rows);
             })
         })
     }
