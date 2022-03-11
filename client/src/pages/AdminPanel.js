@@ -24,7 +24,7 @@ const AdminPanel = observer(() => {
     const [activeSection, setActiveSection] = useState('devices');
 
     return (
-        <div>
+        <div className={"admin-container"}>
             <AdminPanelNavBar setActiveSection={setActiveSection} />
             <AdminPanelContent activeSection={activeSection} />
         </div>

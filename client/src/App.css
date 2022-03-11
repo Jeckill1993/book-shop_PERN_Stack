@@ -116,7 +116,8 @@ h4 {
     align-items: center;
 }
 
-.catalog-container {
+.catalog-container,
+.admin-container {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
