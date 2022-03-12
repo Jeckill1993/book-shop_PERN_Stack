@@ -4,7 +4,7 @@ import DeviceList from "../DeviceList/DeviceList";
 
 const CatalogContent = () => {
     return (
-        <div className={"catalog-content"}>
+        <div className={classes.content}>
             <CatalogBrandBar />
             <DeviceList />
         </div>

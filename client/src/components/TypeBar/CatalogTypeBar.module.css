@@ -1,0 +1,19 @@
+
+.navigate {
+    width: 200px;
+    min-width: 200px;
+    padding: 60px 20px 40px;
+    height: 80vh;
+    position: relative;
+    background-color: #67a3b6;
+}
+
+.navigateItem {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 20px;
+    line-height: 26px;
+    color: #ffffff;
+    cursor: pointer;
+}

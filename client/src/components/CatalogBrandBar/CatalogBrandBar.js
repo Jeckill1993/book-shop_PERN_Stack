@@ -8,10 +8,10 @@ const CatalogBrandBar = observer(() => {
     const { device } = useContext(Context);
 
     return (
-        <div className={"catalog-top-bar"}>
-            <ul>
+        <div className={classes.bar}>
+            <ul className={classes.list}>
                 { device.brands.map((brand) => {
-                    return <li key={brand.id}
+                    return <li className={classes.listItem} key={brand.id}
                                onClick={ () => {device.setSelectedBrand(brand)} }> {brand.name} </li>
                 }) }
             </ul>

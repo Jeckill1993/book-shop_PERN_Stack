@@ -8,10 +8,10 @@ const CatalogTypeBar = observer(() => {
     const { device } = useContext(Context);
 
     return (
-        <div className={"catalog-navigate"}>
+        <div className={classes.navigate}>
             <ul>
                 { device.types.map((type) => {
-                    return <li key={type.id}
+                    return <li className={classes.navigateItem} key={type.id}
                                onClick={ () => {device.setSelectedType(type)} }> {type.name} </li>
                 }) }
             </ul>

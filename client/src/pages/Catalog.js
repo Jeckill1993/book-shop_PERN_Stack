@@ -5,6 +5,7 @@ import {useContext, useEffect} from "react";
 import {Context} from "../index";
 import {fetchBrands, fetchDevices, fetchTypes} from "../api/deviceAPI";
 
+
 const Catalog = observer(() => {
     const {device} = useContext(Context);
 
