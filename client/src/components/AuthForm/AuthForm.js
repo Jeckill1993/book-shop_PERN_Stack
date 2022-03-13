@@ -41,19 +41,27 @@ const AuthForm = observer(() => {
     }
 
     return (
-        <div className="authForm">
-            <h2>{isLogin ? 'Authorization' : 'Registration'}</h2>
-            <input onChange={ (e) => {setEmail(e.target.value)} } type="text" placeholder={"email"} name={"email"} value={email}/>
-            <input onChange={ (e) => {setPassword(e.target.value)} } type="password" placeholder={"password"} name={"password"} value={password}/>
-            <button onClick={ () => { auth() } }>{isLogin ? 'Enter' : 'Register'}</button>
+        <div className={classes.container}>
+            <h3 className={classes.title}>{isLogin ? 'Authorization' : 'Registration'}</h3>
+            <div className={classes.fieldset}>
+                <input className={classes.field} onChange={ (e) => {setEmail(e.target.value)} } type="text"
+                       placeholder={"email"} name={"email"} value={email}/>
+            </div>
+            <div className={classes.fieldset}>
+                <input className={classes.field} onChange={ (e) => {setPassword(e.target.value)} } type="password"
+                       placeholder={"password"} name={"password"} value={password}/>
+            </div>
+            <div className={classes.row}>
+                <button className={classes.btn} onClick={ () => { auth() } }>{isLogin ? 'Enter' : 'Register'}</button>
+            </div>
             {isLogin
-                ? <div>
+                ? <div className={classes.botContainer}>
                     Don't you have account?
-                    <NavLink to={REGISTRATION_ROUTE}>Register</NavLink>
+                    <NavLink className={classes.link} to={REGISTRATION_ROUTE}>Register</NavLink>
                   </div>
-                : <div>
+                : <div className={classes.botContainer}>
                     Have you already account?
-                    <NavLink to={LOGIN_ROUTE}>Login</NavLink>
+                    <NavLink className={classes.link} to={LOGIN_ROUTE}>Login</NavLink>
                   </div>}
         </div>
     );

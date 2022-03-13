@@ -1,5 +1,5 @@
 import {NavLink} from "react-router-dom";
-import {ADMIN_ROUTE, CATALOG_ROUTE, PROFILE_ROUTE, SALES_ROUTE} from "../../utils/const";
+import {ADMIN_ROUTE, BASKET_ROUTE, CATALOG_ROUTE, PROFILE_ROUTE, SALES_ROUTE} from "../../utils/const";
 import {useContext} from "react";
 import {Context} from "../../index";
 import SignHeader from "../SignHeader/SignHeader";
@@ -28,6 +28,7 @@ const NavBar = observer(() => {
             { user.isAuth
                     ? <div>
                         <NavLink className={classes.menuLink} to={PROFILE_ROUTE}>Profile</NavLink>
+                        <NavLink className={classes.menuLink} to={BASKET_ROUTE}>Basket</NavLink>
                         <button onClick={ () => {logOut()} }>Exit</button>
                       </div>
                     : <SignHeader/> }
