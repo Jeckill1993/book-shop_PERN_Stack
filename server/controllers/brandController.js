@@ -8,6 +8,18 @@ class BrandController {
         return res.json(brand);
     }
 
+    async edit(req, res) {
+        const { name } = req.body;
+        const brand = await Brand.create({ name });
+        return res.json(brand);
+    }
+
+    async delete(req, res) {
+        const { name } = req.body;
+        const brand = await Brand.create({ name });
+        return res.json(brand);
+    }
+
     async getAll(req, res) {
         const brands = await Brand.findAll();
         return res.json(brands);

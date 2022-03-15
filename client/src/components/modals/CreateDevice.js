@@ -43,6 +43,9 @@ const CreateDevice = observer(({onHide, isEdit}) => {
             })
         })
     }
+    const editDevice = () => {
+        onHide();
+    }
 
     return (
         <div className={classes.modalOverlay}>
@@ -108,7 +111,7 @@ const CreateDevice = observer(({onHide, isEdit}) => {
                 </form>
                 <div className={classes.modalBtnRow}>
                     {isEdit
-                        ? <button className={classes.modalSecondaryBtn} onClick={ () => {onHide()} }>Edit</button>
+                        ? <button className={classes.modalSecondaryBtn} onClick={ () => {editDevice()} }>Edit</button>
                         : <button className={classes.modalSecondaryBtn} onClick={ () => {addDevice()} }>Add</button>}
                     <button className={classes.modalPrimaryBtn} onClick={ () => {onHide()} }>Exit</button>
                 </div>

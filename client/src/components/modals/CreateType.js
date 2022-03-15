@@ -16,7 +16,10 @@ const CreateType = ({onHide, isEdit}) => {
             fetchTypes().then((data) => {
                 device.setTypes(data);
             });
-        })
+        });
+    }
+    const editType = () => {
+        onHide();
     }
 
     return (
@@ -30,7 +33,7 @@ const CreateType = ({onHide, isEdit}) => {
                 </form>
                 <div className={classes.modalBtnRow}>
                     {isEdit
-                        ? <button className={classes.modalSecondaryBtn} onClick={ () => {onHide()} }>Edit</button>
+                        ? <button className={classes.modalSecondaryBtn} onClick={ () => {editType()} }>Edit</button>
                         : <button className={classes.modalSecondaryBtn} onClick={ () => {addType()} }>Add</button>}
                     <button className={classes.modalPrimaryBtn} onClick={ () => {onHide()} }>Exit</button>
                 </div>

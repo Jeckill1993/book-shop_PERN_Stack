@@ -5,6 +5,9 @@ import {observer} from "mobx-react-lite";
 import CreateBrand from "../modals/CreateBrand";
 import CreateType from "../modals/CreateType";
 import CreateDevice from "../modals/CreateDevice";
+import AdminBrandItem from "../adminPanelItems/AdminBrandItem";
+import AdminTypeItem from "../adminPanelItems/AdminTypeItem";
+import AdminDeviceItem from "../adminPanelItems/AdminDeviceItem";
 
 
 const AdminPanelContent = observer(({activeSection}) => {
@@ -13,42 +16,19 @@ const AdminPanelContent = observer(({activeSection}) => {
     const [typeVisible, setTypeVisible] = useState(false);
     const [brandVisible, setBrandVisible] = useState(false);
     const [deviceVisible, setDeviceVisible] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
 
     return (
         <div className={classes.adminContentContainer}>
             <ul className={classes.adminItemList}>
                 {activeSection === 'devices' ? device.devices.map((item) => {
-                    return <li className={classes.adminItemContainer} key={item.id}>
-                        <div className={classes.adminItemRow}>
-                            <div>{item.name}</div>
-                            <div className={classes.adminItemBtnBox}>
-                                <button className={classes.adminEditBtn}>Edit</button>
-                                <button className={classes.adminDeleteBtn} />
-                            </div>
-                        </div>
-                    </li>
+                    return <AdminDeviceItem key={item.id} item={item} setDeviceVisible={setDeviceVisible} setIsEdit={setIsEdit}/>
                 }) : null}
                 {activeSection === 'types' ? device.types.map((item) => {
-                    return <li className={classes.adminItemContainer} key={item.id}>
-                        <div className={classes.adminItemRow}>
-                            <div>{item.name}</div>
-                            <div className={classes.adminItemBtnBox}>
-                                <button className={classes.adminEditBtn}>Edit</button>
-                                <button className={classes.adminDeleteBtn} />
-                            </div>
-                        </div>
-                    </li>
+                    return <AdminTypeItem key={item.id} item={item} setTypeVisible={setTypeVisible} setIsEdit={setIsEdit}/>
                 }) : null}
                 {activeSection === 'brands' ? device.brands.map((item) => {
-                    return <li className={classes.adminItemContainer} key={item.id}>
-                        <div className={classes.adminItemRow}>
-                            <div>{item.name}</div>
-                            <div className={classes.adminItemBtnBox}>
-                                <button className={classes.adminEditBtn}>Edit</button>
-                                <button className={classes.adminDeleteBtn} />
-                            </div>
-                        </div>
-                    </li>
+                    return <AdminBrandItem key={item.id} item={item} setBrandVisible={setBrandVisible} setIsEdit={setIsEdit}/>
                 }) : null}
             </ul>
             <div className={classes.adminBtnRow}>
@@ -60,9 +40,18 @@ const AdminPanelContent = observer(({activeSection}) => {
                                                       onClick={ () => {setBrandVisible(true)} }>New Brand</button> : null}
             </div>
 
-            {brandVisible ? <CreateBrand onHide={ () => {setBrandVisible(false)} }/> : null}
-            {typeVisible ? <CreateType onHide={ () => {setTypeVisible(false)} }/> : null}
-            {deviceVisible ? <CreateDevice onHide={ () =>{setDeviceVisible(false)} }/> : null}
+            {brandVisible ? <CreateBrand onHide={ () => {
+                setBrandVisible(false);
+                setIsEdit(false);
+            } } isEdit={isEdit} /> : null}
+            {typeVisible ? <CreateType onHide={ () => {
+                setTypeVisible(false);
+                setIsEdit(false);
+            } } isEdit={isEdit} /> : null}
+            {deviceVisible ? <CreateDevice onHide={ () => {
+                setDeviceVisible(false);
+                setIsEdit(false);
+            } } isEdit={isEdit} /> : null}
         </div>
     );
 })

@@ -18,6 +18,9 @@ const CreateBrand = ({onHide, isEdit}) => {
             });
         })
     }
+    const editBrand = () => {
+        onHide();
+    }
 
     return (
         <div className={classes.modalOverlay}>
@@ -30,7 +33,7 @@ const CreateBrand = ({onHide, isEdit}) => {
                 </form>
                 <div className={classes.modalBtnRow}>
                     {isEdit
-                        ? <button className={classes.modalSecondaryBtn} onClick={() => {onHide()}}>Edit</button>
+                        ? <button className={classes.modalSecondaryBtn} onClick={() => {editBrand()}}>Edit</button>
                         : <button className={classes.modalSecondaryBtn} onClick={() => {addBrand()}}>Add</button>}
                     <button className={classes.modalPrimaryBtn} onClick={() => {onHide()}}>Exit</button>
                 </div>
