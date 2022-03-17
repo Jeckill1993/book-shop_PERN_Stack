@@ -1,6 +1,6 @@
 import classes from './modals.module.css';
 import {useContext, useState} from "react";
-import {createType, fetchTypes} from "../../api/deviceAPI";
+import {createType, fetchBrands, fetchTypes, updateType} from "../../api/deviceAPI";
 import {Context} from "../../index";
 
 const CreateType = ({onHide, isEdit}) => {
@@ -19,7 +19,14 @@ const CreateType = ({onHide, isEdit}) => {
         });
     }
     const editType = () => {
-        onHide();
+        updateType({name: value, id: device.selectedType.id}).then((data) => {
+            setValue('');
+            onHide();
+
+            fetchTypes().then((data) => {
+                device.setTypes(data);
+            });
+        })
     }
 
     return (

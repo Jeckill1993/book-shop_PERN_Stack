@@ -1,7 +1,7 @@
 import classes from './modals.module.css';
 import {useContext, useState} from "react";
 import {Context} from "../../index";
-import {createBrand, fetchBrands} from "../../api/deviceAPI";
+import {createBrand, updateBrand, fetchBrands} from "../../api/deviceAPI";
 
 const CreateBrand = ({onHide, isEdit}) => {
     const {device} = useContext(Context);
@@ -19,7 +19,14 @@ const CreateBrand = ({onHide, isEdit}) => {
         })
     }
     const editBrand = () => {
-        onHide();
+        updateBrand({name: value, id: device.selectedBrand.id}).then((data) => {
+            setValue('');
+            onHide();
+
+            fetchBrands().then((data) => {
+                device.setBrands(data);
+            });
+        })
     }
 
     return (

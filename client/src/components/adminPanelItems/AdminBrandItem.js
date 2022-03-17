@@ -1,8 +1,13 @@
 import classes from "./AdminPanelItems.module.css";
+import {useContext} from "react";
+import {Context} from "../../index";
 
 
 const AdminBrandItem = ({item, setBrandVisible, setIsEdit}) => {
-    const clickEdit = () => {
+    const { device } = useContext(Context);
+
+    const clickEdit = (brand) => {
+        device.setSelectedBrand(brand);
         setIsEdit(true);
         setBrandVisible(true);
     }
@@ -12,7 +17,7 @@ const AdminBrandItem = ({item, setBrandVisible, setIsEdit}) => {
             <div className={classes.adminItemRow}>
                 <div>{item.name}</div>
                 <div className={classes.adminItemBtnBox}>
-                    <button className={classes.adminEditBtn} onClick={() => {clickEdit()}}>Edit</button>
+                    <button className={classes.adminEditBtn} onClick={() => {clickEdit(item)}}>Edit</button>
                     <button className={classes.adminDeleteBtn} />
                 </div>
             </div>

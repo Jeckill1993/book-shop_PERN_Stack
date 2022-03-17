@@ -6,8 +6,8 @@ export const createType = async ( type ) => {
     return data;
 }
 
-export const editType = async () => {
-    const { data } = await authHost.put('api/type');
+export const updateType = async (type) => {
+    const { data } = await authHost.put('api/type', type);
     return data;
 }
 
@@ -27,8 +27,8 @@ export const createBrand = async ( brand ) => {
     return data;
 }
 
-export const editBrand = async () => {
-    const { data } = await authHost.put('api/brand');
+export const updateBrand = async (brand) => {
+    const { data } = await authHost.put('api/brand', brand);
     return data;
 }
 

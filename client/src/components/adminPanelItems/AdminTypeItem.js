@@ -1,8 +1,13 @@
 import classes from "./AdminPanelItems.module.css";
+import {useContext} from "react";
+import {Context} from "../../index";
 
 
-const AdminBrandItem = ({item, setTypeVisible, setIsEdit}) => {
-    const clickEdit = () => {
+const AdminTypeItem = ({item, setTypeVisible, setIsEdit}) => {
+    const { device } = useContext(Context);
+
+    const clickEdit = (type) => {
+        device.setSelectedType(type);
         setIsEdit(true);
         setTypeVisible(true);
     }
@@ -12,7 +17,7 @@ const AdminBrandItem = ({item, setTypeVisible, setIsEdit}) => {
             <div className={classes.adminItemRow}>
                 <div>{item.name}</div>
                 <div className={classes.adminItemBtnBox}>
-                    <button className={classes.adminEditBtn} onClick={() => {clickEdit()}}>Edit</button>
+                    <button className={classes.adminEditBtn} onClick={() => {clickEdit(item)}}>Edit</button>
                     <button className={classes.adminDeleteBtn} />
                 </div>
             </div>
@@ -20,4 +25,4 @@ const AdminBrandItem = ({item, setTypeVisible, setIsEdit}) => {
     )
 }
 
-export default AdminBrandItem;
+export default AdminTypeItem;
