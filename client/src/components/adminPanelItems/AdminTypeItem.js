@@ -14,9 +14,7 @@ const AdminTypeItem = ({item, setTypeVisible, setIsEdit}) => {
     }
     const clickDelete = (typeId) => {
         deleteType(typeId).then((data) => {
-            fetchTypes().then((data) => {
-                device.setTypes(data);
-            });
+            device.setTypes(data);
         })
     }
 

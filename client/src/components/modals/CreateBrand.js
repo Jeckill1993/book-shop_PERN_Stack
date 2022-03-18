@@ -12,20 +12,14 @@ const CreateBrand = ({onHide, isEdit}) => {
         createBrand({name: value}).then((data) => {
             setValue('');
             onHide();
-
-            fetchBrands().then((data) => {
-                device.setBrands(data);
-            });
+            device.setBrands(data);
         })
     }
     const editBrand = () => {
         updateBrand({name: value, id: device.selectedBrand.id}).then((data) => {
             setValue('');
             onHide();
-
-            fetchBrands().then((data) => {
-                device.setBrands(data);
-            });
+            device.setBrands(data);
         })
     }
 

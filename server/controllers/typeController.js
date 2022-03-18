@@ -4,20 +4,26 @@ const ApiError = require('../error/ApiError');
 class TypeController {
     async create(req, res) {
         const { name } = req.body;
-        const type = await Type.create({ name });
-        return res.json(type);
+        await Type.create({ name });
+
+        const types = await Type.findAll();
+        return res.json(types);
     }
 
     async edit(req, res) {
         const { name, id } = req.body;
-        const type = await Type.update({ name }, { where: {id: id} });
-        return res.json(type);
+        await Type.update({ name }, { where: {id: id} });
+
+        const types = await Type.findAll();
+        return res.json(types);
     }
 
     async delete(req, res) {
         const { id } = req.params;
-        const type = await Type.destroy( { where: {id: id} });
-        return res.json(type);
+        await Type.destroy( { where: {id: id} });
+
+        const types = await Type.findAll();
+        return res.json(types);
     }
 
     async getAll(req, res) {

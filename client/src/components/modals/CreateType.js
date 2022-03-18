@@ -10,22 +10,16 @@ const CreateType = ({onHide, isEdit}) => {
 
     const addType = () => {
         createType({name: value}).then((data) => {
+            device.setTypes(data);
             setValue('');
             onHide();
-
-            fetchTypes().then((data) => {
-                device.setTypes(data);
-            });
         });
     }
     const editType = () => {
         updateType({name: value, id: device.selectedType.id}).then((data) => {
+            device.setTypes(data);
             setValue('');
             onHide();
-
-            fetchTypes().then((data) => {
-                device.setTypes(data);
-            });
         })
     }
 

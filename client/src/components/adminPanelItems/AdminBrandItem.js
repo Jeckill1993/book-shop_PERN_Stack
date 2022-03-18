@@ -12,11 +12,9 @@ const AdminBrandItem = ({item, setBrandVisible, setIsEdit}) => {
         setIsEdit(true);
         setBrandVisible(true);
     }
-    const clickDelete = (brandId) => {
+    const removeBrand = (brandId) => {
         deleteBrand(brandId).then((data) => {
-            fetchBrands().then((data) => {
-                device.setBrands(data);
-            });
+            device.setBrands(data);
         })
     }
 
@@ -26,7 +24,7 @@ const AdminBrandItem = ({item, setBrandVisible, setIsEdit}) => {
                 <div>{item.name}</div>
                 <div className={classes.adminItemBtnBox}>
                     <button className={classes.adminEditBtn} onClick={() => {clickEdit(item)}}>Edit</button>
-                    <button className={classes.adminDeleteBtn} onClick={() => {clickDelete(item.id)}} />
+                    <button className={classes.adminDeleteBtn} onClick={() => {removeBrand(item.id)}} />
                 </div>
             </div>
         </li>
