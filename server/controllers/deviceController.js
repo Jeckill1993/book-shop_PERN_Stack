@@ -33,8 +33,8 @@ class DeviceController {
 
     async edit(req, res, next) {
         try {
-            let { name, price, brandId, typeId, info } = req.body;
-            const { img } = req.files; // install package express-fileupload and register it in index.js - (app.use(fileUpload({})))
+            let { name, price, brandId, typeId, info, id } = req.body;
+            const { img } = req.files;
             let fileName = uuid.v4() + ".jpg";
 
             img.mv(path.resolve(__dirname, '..' ,'static', fileName));
@@ -50,7 +50,7 @@ class DeviceController {
                 })
             }
 
-            const device = await Device.create({ name, price, brandId, typeId, img: fileName });
+            const device = await Device.update({ name, price, brandId, typeId, img: fileName }, {where: {id: id}});
             return res.json(device);
 
         } catch (err) {

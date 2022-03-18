@@ -1,7 +1,7 @@
 import classes from './modals.module.css';
 import {useContext, useState} from "react";
 import {Context} from "../../index";
-import {createDevice, fetchDevices} from "../../api/deviceAPI";
+import {createDevice, fetchDevices, updateDevice} from "../../api/deviceAPI";
 import {observer} from "mobx-react-lite";
 
 const CreateDevice = observer(({onHide, isEdit}) => {
@@ -27,7 +27,7 @@ const CreateDevice = observer(({onHide, isEdit}) => {
         setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i));
     }
 
-    const addDevice = () => {
+    const getFormData = (id = '') => {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('price', `${price}`);
@@ -35,16 +35,32 @@ const CreateDevice = observer(({onHide, isEdit}) => {
         formData.append('brandId', `${brandId}`);
         formData.append('typeId', `${typeId}`);
         formData.append('info', JSON.stringify(info));
+        formData.append('id', `${id}`);
+
+        return formData;
+    }
+
+    const addDevice = () => {
+        const formData = getFormData();
 
         createDevice(formData).then((data) => {
             onHide();
+
             fetchDevices().then((data) => {
                 device.setDevices(data.rows);
             })
         })
     }
     const editDevice = () => {
-        onHide();
+        const formData = getFormData(device.selectedDevice.id);
+
+        updateDevice(formData).then((data) => {
+            onHide();
+
+            fetchDevices().then((data) => {
+                device.setDevices(data.rows);
+            })
+        })
     }
 
     return (
@@ -117,7 +133,6 @@ const CreateDevice = observer(({onHide, isEdit}) => {
                 </div>
             </div>
         </div>
-
     )
 })
 
