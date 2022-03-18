@@ -10,13 +10,13 @@ class TypeController {
 
     async edit(req, res) {
         const { name, id } = req.body;
-        const type = await Type.update({ name }, {where: {id: id}});
+        const type = await Type.update({ name }, { where: {id: id} });
         return res.json(type);
     }
 
     async delete(req, res) {
-        const { name } = req.body;
-        const type = await Type.create({ name });
+        const { id } = req.params;
+        const type = await Type.destroy( { where: {id: id} });
         return res.json(type);
     }
 
