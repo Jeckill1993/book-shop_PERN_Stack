@@ -1,7 +1,7 @@
-import {useContext, useEffect, useState} from "react";
-import {Context} from "../index";
+import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {fetchOneDevice} from "../api/deviceAPI";
+import DevicePageItem from "../components/DeviceItem/DevicePageItem";
 
 const DevicePage = () => {
     const [device, setDevice] = useState({info: []});
@@ -14,9 +14,7 @@ const DevicePage = () => {
     }, []);
 
     return (
-        <div>
-
-        </div>
+        <DevicePageItem device={device} />
     );
 }
 

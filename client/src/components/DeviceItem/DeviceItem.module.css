@@ -14,6 +14,7 @@
 .image {
     width: 200px;
     height: 200px;
+    margin: 0 auto;
     position: relative;
     display: flex;
     justify-content: center;
@@ -37,4 +38,57 @@
     font-size: 18px;
     line-height: 24px;
     color: #14143d;
+}
+
+.btn {
+    margin: 10px 0 0;
+    width: 100%;
+    height: 40px;
+    background-color: #14143d;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.devicePageItem {
+    padding: 80px 40px 40px;
+}
+
+.devicePageInfo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.devicePageImage,
+.devicePageText {
+    width: 40%;
+    margin: 0 40px;
+}
+
+.devicePageName,
+.devicePagePrice {
+    margin: 0 0 20px;
+}
+
+.devicePageBtn {
+    width: 280px;
+    height: 40px;
+    background-color: #14143d;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.devicePageDescription {
+    margin: 50px 0 0;
 }

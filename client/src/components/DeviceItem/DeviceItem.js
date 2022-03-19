@@ -16,8 +16,8 @@ const DeviceItem = ({ device }) => {
                     <span className={classes.price}>{device.price}</span>
                 </div>
                 <div>{device.rating}</div>
+                <button className={classes.btn}>Add to Basket</button>
             </div>
-
         </li>
     )
 }
