@@ -27,7 +27,7 @@ const CreateDevice = observer(({onHide, isEdit}) => {
         setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i));
     }
 
-    const getFormData = (id = '') => {
+    const getFormData = () => {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('price', `${price}`);
@@ -35,7 +35,6 @@ const CreateDevice = observer(({onHide, isEdit}) => {
         formData.append('brandId', `${brandId}`);
         formData.append('typeId', `${typeId}`);
         formData.append('info', JSON.stringify(info));
-        formData.append('id', `${id}`);
 
         return formData;
     }
@@ -52,7 +51,8 @@ const CreateDevice = observer(({onHide, isEdit}) => {
         })
     }
     const editDevice = () => {
-        const formData = getFormData(device.selectedDevice.id);
+        const formData = getFormData();
+        formData.append('id', `${device.selectedDevice.id}`);
 
         updateDevice(formData).then((data) => {
             onHide();

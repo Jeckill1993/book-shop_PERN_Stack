@@ -2,8 +2,6 @@ import classes from "./DeviceItem.module.css";
 
 const DevicePageItem = ({device}) => {
 
-    console.log(device);
-
     return (
         <div className={classes.devicePageItem}>
             <div className={"wrapper min"}>

@@ -26,7 +26,7 @@ const start = async () => {  //all calls to databases are asynchronous
     try {
 
         await sequelize.authenticate(); //connect to database
-        await sequelize.sync();
+        await sequelize.sync(); //attempt! the operation delete all data every time of refresh. Use {force:true} if you need to update structure of tables (add columns in table-model, for example)
 
         app.listen(PORT, () => {
             console.log(`Server was started on port ${PORT}`);
