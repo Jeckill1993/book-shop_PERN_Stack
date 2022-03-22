@@ -9,9 +9,11 @@ import {useContext, useEffect, useState} from "react";
 import {Context} from "./index";
 import {checkAuth} from "./api/useAPI";
 import Loading from "./components/Loading/Loading";
+import {fetchBasket} from "./api/deviceAPI";
 
 const App = observer(() => {
-    const {user} = useContext(Context);
+    const { basket } = useContext(Context);
+    const { user } = useContext(Context);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -21,6 +23,10 @@ const App = observer(() => {
             if (data.role === 'ADMIN') {
                 user.setIsAdmin(true);
             }
+
+            fetchBasket(user.user.id).then((data) => {
+                basket.setBasket(data);
+            })
 
         }).finally(() => {
             setLoading(false);

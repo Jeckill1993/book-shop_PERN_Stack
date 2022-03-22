@@ -4,9 +4,9 @@ const ApiError = require('../error/ApiError');
 class BasketController {
     async addBasketDevice(req, res, next) {
         try {
-            let { id, name, price } = req.body;
+            let { name, price, deviceId, basketId } = req.body;
 
-            await BasketDevice.create({ id, name, price });
+            await BasketDevice.create({ name, price, deviceId, basketId });
             const basketDevices = BasketDevice.findAll();
             return res.json(basketDevices);
 

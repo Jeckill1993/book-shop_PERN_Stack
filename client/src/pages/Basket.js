@@ -9,12 +9,10 @@ const Basket = observer(() => {
     const { user } = useContext(Context);
 
     useEffect(() => {
-        const userId = user.user.id;
-
-        fetchBasket(userId).then((data) => {
+        fetchBasket(user.user.id).then((data) => {
             basket.setBasket(data);
         })
-    })
+    }, [])
 
     return (
         <BasketList />

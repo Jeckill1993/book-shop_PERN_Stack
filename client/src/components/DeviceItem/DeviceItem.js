@@ -2,12 +2,21 @@ import classes from "./DeviceItem.module.css";
 import { useNavigate } from "react-router-dom";
 import {DEVICE_ROUTE} from "../../utils/const";
 import {addDeviceToBasket} from "../../api/deviceAPI";
+import {useContext} from "react";
+import {Context} from "../../index";
 
 const DeviceItem = ({ device }) => {
+    const { basket } = useContext(Context);
     const navigate = useNavigate();
 
     const clickAdd = (device) => {
-        addDeviceToBasket(device).then((data) => {
+        const formData = new FormData();
+        formData.append('name', device.name);
+        formData.append('price', `${device.price}`);
+        formData.append('basketId', `${basket.basket.id}`);
+        formData.append('deviceId', `${device.id}`);
+
+        addDeviceToBasket(formData).then((data) => {
             alert(device.name + 'was added to basket');
         })
     }
