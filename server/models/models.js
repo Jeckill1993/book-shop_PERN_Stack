@@ -28,22 +28,6 @@ const Basket = sequelize.define('basket', {
     },
 })
 
-const BasketDevice = sequelize.define('basket_device', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    price: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-})
-
 const Device = sequelize.define('device', {
     id: {
         type: DataTypes.INTEGER,
@@ -65,6 +49,22 @@ const Device = sequelize.define('device', {
     },
     img: {
         type: DataTypes.STRING,
+        allowNull: false
+    },
+})
+
+const BasketDevice = sequelize.define('basket_item', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    price: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
 })
@@ -149,14 +149,15 @@ Rating.belongsTo(Device);
 Device.hasMany(BasketDevice);
 BasketDevice.belongsTo(Device);
 
-Device.hasMany(DeviceInfo, { as: 'info' });
+Device.hasMany(DeviceInfo, {as: 'info'});
 DeviceInfo.belongsTo(Device);
 
-Basket.hasMany(BasketDevice, { as: 'devicesBasket' });
+Basket.hasMany(BasketDevice, { as: 'item' });
 BasketDevice.belongsTo(Basket);
 
-Type.belongsToMany(Brand, { through: TypeBrand });
-Brand.belongsToMany(Type, { through: TypeBrand });
+Type.belongsToMany(Brand, {through: TypeBrand })
+Brand.belongsToMany(Type, {through: TypeBrand })
+
 
 module.exports = {
     User,
