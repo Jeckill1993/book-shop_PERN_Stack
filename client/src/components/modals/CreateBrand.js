@@ -3,12 +3,17 @@ import {useContext, useState} from "react";
 import {Context} from "../../index";
 import {createBrand, updateBrand, fetchBrands} from "../../api/deviceAPI";
 
+
 const CreateBrand = ({onHide, isEdit}) => {
     const {device} = useContext(Context);
     const [value, setValue] = useState('');
-
+    const [isError, setError] = useState(false);
 
     const addBrand = () => {
+        if (!value.length) {
+            setError(true);
+            return;
+        }
         createBrand({name: value}).then((data) => {
             setValue('');
             onHide();
@@ -16,6 +21,10 @@ const CreateBrand = ({onHide, isEdit}) => {
         })
     }
     const editBrand = () => {
+        if (!value.length) {
+            setError(true);
+            return;
+        }
         updateBrand({name: value, id: device.selectedBrand.id}).then((data) => {
             setValue('');
             onHide();
@@ -28,8 +37,10 @@ const CreateBrand = ({onHide, isEdit}) => {
             <div className={classes.modalContainer}>
                 <form>
                     <div className={classes.modalFieldsetFull}>
-                        <input className={classes.modalField} type={'text'} placeholder={'Enter brand'} value={value}
+                        <input className={classes.modalField} type={'text'} placeholder={'Enter brand'}
+                               value={isEdit ? device.selectedBrand.value: value}
                                onChange={ (e) => {setValue(e.target.value)} }/>
+                        { isError ? <span className={classes.helper}>The field is required</span> : '' }
                     </div>
                 </form>
                 <div className={classes.modalBtnRow}>

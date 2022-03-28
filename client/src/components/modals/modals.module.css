@@ -161,3 +161,10 @@
 .modalSecondaryBtn {
     background-color: #488648;
 }
+
+.helper {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #cc1919;
+}
