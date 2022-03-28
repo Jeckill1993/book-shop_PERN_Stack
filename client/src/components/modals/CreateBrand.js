@@ -1,5 +1,5 @@
 import classes from './modals.module.css';
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Context} from "../../index";
 import {createBrand, updateBrand, fetchBrands} from "../../api/deviceAPI";
 
@@ -8,6 +8,11 @@ const CreateBrand = ({onHide, isEdit}) => {
     const {device} = useContext(Context);
     const [value, setValue] = useState('');
     const [isError, setError] = useState(false);
+
+    useEffect(() => {
+        if (isEdit) setValue(device.selectedBrand.name);
+    },[])
+
 
     const addBrand = () => {
         if (!value.length) {
@@ -38,7 +43,7 @@ const CreateBrand = ({onHide, isEdit}) => {
                 <form>
                     <div className={classes.modalFieldsetFull}>
                         <input className={classes.modalField} type={'text'} placeholder={'Enter brand'}
-                               value={isEdit ? device.selectedBrand.value: value}
+                               value={ value }
                                onChange={ (e) => {setValue(e.target.value)} }/>
                         { isError ? <span className={classes.helper}>The field is required</span> : '' }
                     </div>
