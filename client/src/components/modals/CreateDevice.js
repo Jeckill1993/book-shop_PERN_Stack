@@ -10,13 +10,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const CreateDevice = observer(({onHide, isEdit}) => {
     const {device} = useContext(Context);
     const [name, setName] = useState('');
-    const [price, setPrice] = useState(null);
+    const [price, setPrice] = useState(0);
     const [file, setFile] = useState(null);
     const [brandId, setBrandId] = useState(0);
     const [typeId, setTypeId] = useState(0);
     const [info, setInfo] = useState([]);
 
     const selectFile = (e) => {
+        debugger;
         setFile(e.target.files[0]);
     }
 
@@ -76,7 +77,7 @@ const CreateDevice = observer(({onHide, isEdit}) => {
                                               fontSize: '12px',
                                               lineHeight: '16px'}}>Type:</InputLabel>
                             <Select sx={{ width: '100%' }}
-                                onClick={(e) => { setTypeId(parseInt(e.target.value)) }}>
+                                onChange={(e) => { setTypeId(parseInt(e.target.value)) }}>
                                 {device.types.map((type) => {
                                     return <MenuItem key={type.id} value={type.id}>{type.name}</MenuItem>
                                 })}
@@ -87,7 +88,7 @@ const CreateDevice = observer(({onHide, isEdit}) => {
                                 fontSize: '12px',
                                 lineHeight: '16px'}}>Brand:</InputLabel>
                             <Select sx={{ width: '100%' }}
-                                    onClick={(e) => { setBrandId(parseInt(e.target.value)) }}>
+                                    onChange={(e) => { setBrandId(parseInt(e.target.value)) }}>
                                 {device.brands.map((brand) => {
                                     return <MenuItem key={brand.id} value={brand.id}>{brand.name}</MenuItem>
                                 })}
@@ -107,8 +108,9 @@ const CreateDevice = observer(({onHide, isEdit}) => {
                                        }}/>
                         </div>
                     </div>
-                    <label htmlFor="icon-button-file" onClick={(e) => { selectFile(e) }}>
-                        <Input sx={{display: 'none'}} accept="image/*" id="icon-button-file" type="file"/>
+                    <label htmlFor="icon-button-file">
+                        <Input sx={{display: 'none'}} accept="image/*" id="icon-button-file" type="file"
+                               onChange={(e) => { selectFile(e) }}/>
                         <IconButton color="primary" aria-label="upload picture" component="span">
                             <PhotoCamera/>
                         </IconButton>
