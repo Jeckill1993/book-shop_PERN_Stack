@@ -10,6 +10,8 @@ import {Context} from "./index";
 import {checkAuth} from "./api/useAPI";
 import Loading from "./components/Loading/Loading";
 import {fetchBasket} from "./api/deviceAPI";
+import theme from "./utils/theme";
+import {ThemeProvider} from "@mui/material";
 
 const App = observer(() => {
     const { basket } = useContext(Context);
@@ -35,10 +37,12 @@ const App = observer(() => {
 
   return (
       <BrowserRouter>
-          <Header/>
-          <AppRouter />
-          <Footer/>
-          { loading ? <Loading/>: '' }
+          <ThemeProvider theme={theme}>
+              <Header/>
+              <AppRouter />
+              <Footer/>
+              { loading ? <Loading/>: '' }
+          </ThemeProvider>
       </BrowserRouter>
   );
 })
