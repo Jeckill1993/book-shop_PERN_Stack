@@ -17,14 +17,13 @@ const CreateDevice = observer(({onHide, isEdit}) => {
     const [info, setInfo] = useState([]);
 
     const selectFile = (e) => {
-        debugger;
         setFile(e.target.files[0]);
     }
 
     const addInfo = () => {
         setInfo([...info, {title: '', description: '', number: Date.now()}]);
     }
-    const removeIndo = (number) => {
+    const removeInfo = (number) => {
         setInfo(info.filter(i => i.number !== number));
     }
     const changeInfo = (key, value, number) => {
@@ -68,8 +67,8 @@ const CreateDevice = observer(({onHide, isEdit}) => {
     }
 
     return (
-        <div className={classes.modalOverlay}>
-            <div className={classes.modalContainer}>
+        <div className={classes.overlay}>
+            <div className={classes.container}>
                 <form>
                     <div className={classes.row}>
                         <div className={classes.fieldset}>
@@ -115,38 +114,36 @@ const CreateDevice = observer(({onHide, isEdit}) => {
                             <PhotoCamera/>
                         </IconButton>
                     </label>
-                    <div className={classes.modalOptionsBox}>
-                        <h4 className={classes.modalOptionsTitle}>Characteristic</h4>
-                        {
-                            info.map((item) => {
-                                return <div className={classes.modalOptionRow} key={item.number}>
-                                    <div className={classes.modalOptionFieldset}>
-                                        <input type={"text"} value={item.title} onChange={(e) => {
-                                            changeInfo('title', e.target.value, item.number)
-                                        }}
-                                               className={classes.modalOptionField} placeholder={"title"}/>
+                    <div className={classes.optionsBox}>
+                        <h4 className={classes.optionsTitle}>Characteristic</h4>
+                        { info.map((item) => {
+                                return <div className={classes.optionRow} key={item.number}>
+                                    <div className={classes.optionFieldset}>
+                                        <TextField size="small" placeholder={"Title"}
+                                                   variant="outlined" value={item.title}
+                                                   onChange={(e) => {
+                                                       changeInfo('title', e.target.value, item.number)}}/>
                                     </div>
-                                    <div className={classes.modalOptionFieldset}>
-                                        <input type={"text"} value={item.description} onChange={(e) => {
-                                            changeInfo('description', e.target.value, item.number)
-                                        }}
-                                               className={classes.modalOptionField} placeholder={"description"}/>
+                                    <div className={classes.optionFieldset}>
+                                        <TextField size="small" placeholder={"Description"}
+                                                   variant="outlined" value={item.description}
+                                                   onChange={(e) => {
+                                                       changeInfo('description', e.target.value, item.number)}}/>
                                     </div>
                                     <IconButton aria-label="delete" color="dark" onClick={() => {
-                                        removeIndo(item.number)
+                                        removeInfo(item.number)
                                     }}>
                                         <DeleteIcon />
                                     </IconButton>
                                 </div>
-                            })
-                        }
+                            }) }
                         <Button sx={{ width: '200px' }} variant={'contained'} color="dark" type={"button"} onClick={() => {
                             addInfo()
                         }}>Add Option</Button>
                     </div>
 
                 </form>
-                <div className={classes.modalBtnRow}>
+                <div className={classes.btnRow}>
                     {isEdit
                         ? <Button variant={'contained'} color={'success'} size={'large'} onClick={() => {
                             editDevice()

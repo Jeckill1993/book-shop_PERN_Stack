@@ -1,28 +1,14 @@
 
-.adminContentContainer {
+.container {
     width: 100%;
     padding: 40px 20px;
     position: relative;
 }
 
-.adminItemList {
+.list {
     margin: 0 0 20px;
 }
 
-.adminBtnRow {
+.row {
     margin: 0 0 20px;
-}
-
-.adminBtnGeneral {
-    width: 200px;
-    min-width: 200px;
-    height: 40px;
-    background-color: #14143d;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
 }

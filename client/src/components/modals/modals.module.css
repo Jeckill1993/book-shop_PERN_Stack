@@ -1,5 +1,5 @@
 
-.modalOverlay {
+.overlay {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -10,10 +10,10 @@
     z-index: 1000;
 }
 
-.modalContainer {
+.container {
     width: 100%;
     max-width: 600px;
-    margin: 120px auto 0;
+    margin: 60px auto 0;
     padding: 40px;
     border-radius: 28px;
     background-color: #ffffff;
@@ -27,71 +27,48 @@
     align-items: start;
 }
 
-.fieldset {
-    width: 48%;
+.fieldset,
+.fieldsetFull {
     position: relative;
     margin: 0 0 20px;
 }
 
-.modalFieldsetFull {
+.fieldset {
+    width: 48%;
+}
+
+.fieldsetFull {
     width: 100%;
+}
+
+.optionsBox {
     position: relative;
 }
 
-.modalField {
-    width: 100%;
-    height: 50px;
-    background-color: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 4px;
-    padding: 0 20px;
-    font-size: 18px;
-    line-height: 26px;
-}
-
-.modalOptionsBox {
-    position: relative;
-}
-
-.modalOptionsTitle {
+.optionsTitle {
     text-align: center;
     margin: 0 0 20px;
 }
 
-.modalOptionRow {
+.optionRow {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.btnDeleteOption {
-    border: none;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    cursor: pointer;
-    background-color: #ffffff;
-}
-
-.modalOptionFieldset {
+.optionFieldset {
     width: 45%;
     position: relative;
+    margin: 0 0 10px;
     padding: 0 15px 0 0;
 }
 
-.modalOptionField {
+.optionField {
     width: 100%;
     height: 38px;
-    margin: 0 0 10px;
-    padding: 0 15px;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    background-color: #ffffff;
-    font-size: 14px;
-    line-height: 20px;
 }
 
-.modalBtnRow {
+.btnRow {
     display: flex;
     justify-content: flex-end;
     align-items: center;

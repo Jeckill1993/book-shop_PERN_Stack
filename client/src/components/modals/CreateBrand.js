@@ -2,6 +2,7 @@ import classes from './modals.module.css';
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../../index";
 import {createBrand, updateBrand, fetchBrands} from "../../api/deviceAPI";
+import {Button, TextField} from "@mui/material";
 
 
 const CreateBrand = ({onHide, isEdit}) => {
@@ -38,21 +39,25 @@ const CreateBrand = ({onHide, isEdit}) => {
     }
 
     return (
-        <div className={classes.modalOverlay}>
-            <div className={classes.modalContainer}>
+        <div className={classes.overlay}>
+            <div className={classes.container}>
                 <form>
-                    <div className={classes.modalFieldsetFull}>
-                        <input className={classes.modalField} type={'text'} placeholder={'Enter brand'}
-                               value={ value }
-                               onChange={ (e) => {setValue(e.target.value)} }/>
+                    <div className={classes.fieldsetFull}>
+                        <TextField sx={{ width: '100%' }} label="Brand:" variant="outlined" value={ value }
+                                   onChange={ (e) => {
+                                       setValue(e.target.value)} } />
                         { isError ? <span className={classes.helper}>The field is required</span> : '' }
                     </div>
                 </form>
-                <div className={classes.modalBtnRow}>
-                    {isEdit
-                        ? <button className={classes.modalSecondaryBtn} onClick={() => {editBrand()}}>Edit</button>
-                        : <button className={classes.modalSecondaryBtn} onClick={() => {addBrand()}}>Add</button>}
-                    <button className={classes.modalPrimaryBtn} onClick={() => {onHide()}}>Exit</button>
+                <div className={classes.btnRow}>
+                    { isEdit
+                        ? <Button variant={'contained'} color={'success'} size={'large'} onClick={() => {
+                            editBrand() }}>Edit</Button>
+                        : <Button variant={'contained'} color={'success'} size={'large'} onClick={() => {
+                            addBrand() }}>Add</Button>
+                    }
+                    <Button sx={{ marginLeft: '20px' }} variant={'contained'} size={'large'} onClick={() => {
+                        onHide() }}>Exit</Button>
                 </div>
             </div>
         </div>

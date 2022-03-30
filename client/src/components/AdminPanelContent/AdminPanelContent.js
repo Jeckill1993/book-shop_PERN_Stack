@@ -8,6 +8,7 @@ import CreateDevice from "../modals/CreateDevice";
 import AdminBrandItem from "../adminPanelItems/AdminBrandItem";
 import AdminTypeItem from "../adminPanelItems/AdminTypeItem";
 import AdminDeviceItem from "../adminPanelItems/AdminDeviceItem";
+import {Button} from "@mui/material";
 
 
 const AdminPanelContent = observer(({activeSection}) => {
@@ -19,8 +20,8 @@ const AdminPanelContent = observer(({activeSection}) => {
     const [isEdit, setIsEdit] = useState(false);
 
     return (
-        <div className={classes.adminContentContainer}>
-            <ul className={classes.adminItemList}>
+        <div className={classes.container}>
+            <ul className={classes.list}>
                 {activeSection === 'devices' ? device.devices.map((item) => {
                     return <AdminDeviceItem key={item.id} item={item} setDeviceVisible={setDeviceVisible} setIsEdit={setIsEdit}/>
                 }) : null}
@@ -31,13 +32,13 @@ const AdminPanelContent = observer(({activeSection}) => {
                     return <AdminBrandItem key={item.id} item={item} setBrandVisible={setBrandVisible} setIsEdit={setIsEdit}/>
                 }) : null}
             </ul>
-            <div className={classes.adminBtnRow}>
-                {activeSection === 'devices' ? <button className={classes.adminBtnGeneral}
-                                                       onClick={ () => {setDeviceVisible(true)} }>New Device</button> : null}
-                {activeSection === 'types' ? <button className={classes.adminBtnGeneral}
-                                                     onClick={ () => {setTypeVisible(true)} }>New Type</button> : null}
-                {activeSection === 'brands' ? <button className={classes.adminBtnGeneral}
-                                                      onClick={ () => {setBrandVisible(true)} }>New Brand</button> : null}
+            <div className={classes.row}>
+                {activeSection === 'devices' ? <Button sx={{ width: '200px' }} variant={'contained'} color="dark" type={"button"}
+                                                       onClick={ () => {setDeviceVisible(true)} }>New Device</Button> : null}
+                {activeSection === 'types' ? <Button sx={{ width: '200px' }} variant={'contained'} color="dark" type={"button"}
+                                                     onClick={ () => {setTypeVisible(true)} }>New Type</Button> : null}
+                {activeSection === 'brands' ? <Button sx={{ width: '200px' }} variant={'contained'} color="dark" type={"button"}
+                                                      onClick={ () => {setBrandVisible(true)} }>New Brand</Button> : null}
             </div>
 
             {brandVisible ? <CreateBrand onHide={ () => {

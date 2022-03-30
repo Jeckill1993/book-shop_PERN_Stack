@@ -2,6 +2,9 @@ import classes from "./AdminPanelItems.module.css";
 import {useContext} from "react";
 import {Context} from "../../index";
 import {deleteBrand, fetchBrands} from "../../api/deviceAPI";
+import {IconButton} from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 
 const AdminBrandItem = ({item, setBrandVisible, setIsEdit}) => {
@@ -12,19 +15,23 @@ const AdminBrandItem = ({item, setBrandVisible, setIsEdit}) => {
         setIsEdit(true);
         setBrandVisible(true);
     }
-    const removeBrand = (brandId) => {
+    const clickDelete = (brandId) => {
         deleteBrand(brandId).then((data) => {
             device.setBrands(data);
         })
     }
 
     return (
-        <li className={classes.adminItemContainer}>
-            <div className={classes.adminItemRow}>
+        <li className={classes.container}>
+            <div className={classes.row}>
                 <div>{item.name}</div>
-                <div className={classes.adminItemBtnBox}>
-                    <button className={classes.adminEditBtn} onClick={() => {clickEdit(item)}}>Edit</button>
-                    <button className={classes.adminDeleteBtn} onClick={() => {removeBrand(item.id)}} />
+                <div className={classes.btnBox}>
+                    <IconButton aria-label="delete" color="dark" onClick={() => { clickEdit(item) }}>
+                        <EditIcon />
+                    </IconButton>
+                    <IconButton aria-label="delete" color="dark" onClick={() => { clickDelete(item.id) }}>
+                        <DeleteIcon />
+                    </IconButton>
                 </div>
             </div>
         </li>
