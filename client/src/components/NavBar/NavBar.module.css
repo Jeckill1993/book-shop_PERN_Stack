@@ -21,5 +21,20 @@
     text-decoration: underline;
 }
 
+.signBox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+@media screen and (max-width: 1200px) {
+    .menuLink {
+        margin-left: 20px;
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
 
 

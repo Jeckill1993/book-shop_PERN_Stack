@@ -1,15 +1,18 @@
 import {NavLink} from "react-router-dom";
 import {ADMIN_ROUTE, BASKET_ROUTE, CATALOG_ROUTE, PROFILE_ROUTE, SALES_ROUTE} from "../../utils/const";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {Context} from "../../index";
-import SignHeader from "../SignHeader/SignHeader";
+import SignHeader from "./SignHeader";
 import {observer} from "mobx-react-lite";
 
 import classes from "./NavBar.module.css";
+import {Button} from "@mui/material";
 
 
 const NavBar = observer(() => {
     const { user } = useContext(Context);
+
+    const [isMobile, setIsMobile] = useState(false);
 
     const logOut = () => {
         user.setUser({});
@@ -29,7 +32,8 @@ const NavBar = observer(() => {
                     ? <div>
                         <NavLink className={classes.menuLink} to={PROFILE_ROUTE}>Profile</NavLink>
                         <NavLink className={classes.menuLink} to={BASKET_ROUTE}>Basket</NavLink>
-                        <button onClick={ () => {logOut()} }>Exit</button>
+                    <Button sx={{ marginLeft: '40px' }} variant={'contained'} size={'large'} onClick={() => {
+                        logOut()}}>Exit</Button>
                       </div>
                     : <SignHeader/> }
             { user.isAuth && user.isAdmin ? <NavLink className={classes.menuLink} to={ADMIN_ROUTE}>Admin Panel</NavLink> : '' }
