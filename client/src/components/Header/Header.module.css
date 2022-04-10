@@ -8,8 +8,8 @@
 }
 
 .logo {
-    width: 105px;
-    min-width: 105px;
+    width: 314px;
+    min-width: 314px;
     height: 80px;
     margin-right: 40px;
     position: relative;
@@ -18,5 +18,13 @@
 @media screen and (max-width: 1200px) {
     .header {
         padding: 10px 0;
+    }
+
+    .logo {
+        width: 157px;
+        min-width: 157px;
+        height: 40px;
+        margin-right: 20px;
+        position: relative;
     }
 }

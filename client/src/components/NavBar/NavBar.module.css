@@ -1,5 +1,6 @@
 
-.menu {
+.menu,
+.additionalMenu {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -7,8 +8,8 @@
 
 .menuLink {
     margin-left: 40px;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 24px;
+    line-height: 28px;
     color: #000000;
     transition: 0.4s;
 }
@@ -28,11 +29,38 @@
 
 }
 
+.btnContainer {
+    margin-left: 40px;
+}
+
+.burgerBtnContainer {
+    display: none;
+    margin-left: 40px;
+}
+
 @media screen and (max-width: 1200px) {
     .menuLink {
         margin-left: 20px;
-        font-size: 18px;
+        font-size: 20px;
         line-height: 24px;
+    }
+
+    .btnContainer {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .menu {
+        display: none;
+    }
+
+    .menu.opened {
+        display: block;
+    }
+
+    .burgerBtnContainer {
+        display: block;
     }
 }
 

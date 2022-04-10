@@ -3,7 +3,7 @@ import {SHOP_ROUTE} from "../../utils/const";
 import NavBar from "../NavBar/NavBar";
 import classes from "./Header.module.css";
 
-import logo from "../../assets/img/logo.jpg";
+import logo from "../../assets/img/logo.png";
 
 const Header = () => {
     return (

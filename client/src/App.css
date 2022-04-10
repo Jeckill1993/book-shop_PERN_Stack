@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap');
 
 /* reset css */
 html, body, div, span, applet, object, iframe,
@@ -52,7 +52,7 @@ table {
 
 /* default style */
 html, body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-size: 16px;
     line-height: 24px;
 }
@@ -62,7 +62,7 @@ body {
 }
 
 button, input, select, textarea {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-size: 16px;
     line-height: 24px;
     color: #000000;
