@@ -26,9 +26,15 @@ const NavBar = observer(() => {
 
     }
 
+    const closeMenuHandler = () => {
+        if(!isOpenMenu) return;
+        setOpenMenu(false);
+    }
+
     return (
         <div>
-            <nav className={isOpenMenu ? `${classes.menu} ${classes.opened}` : `${classes.menu}` }>
+            <nav className={isOpenMenu ? `${classes.menu} ${classes.opened}` : `${classes.menu}` }
+                onClick={ () => {closeMenuHandler()} } >
                 <NavLink className={classes.menuLink} to={CATALOG_ROUTE}>Catalog</NavLink>
                 <NavLink className={classes.menuLink} to={SALES_ROUTE}>Sales</NavLink>
                 { user.isAuth
@@ -49,15 +55,14 @@ const NavBar = observer(() => {
                         </div>
                     </NavLink>
                     : '' }
+                <div className={classes.closeMenu} onClick={ () => {closeMenuHandler()} }/>
             </nav>
             <div className={classes.burgerBtnContainer} onClick={ () => {setOpenMenu(true)} }>
                 <IconButton aria-label="mobile-menu" color="dark">
                     <DehazeIcon/>
                 </IconButton>
             </div>
-
         </div>
-
     );
 })
 

@@ -26,7 +26,7 @@ const AdminBrandItem = ({item, setDeviceVisible, setIsEdit}) => {
     return (
         <li className={classes.container}>
             <div className={classes.row}>
-                <div>{item.name}</div>
+                <div className={classes.text}>{item.name}</div>
                 <div className={classes.btnBox}>
                     <IconButton aria-label="delete" color="dark" onClick={() => { clickEdit(item) }}>
                         <EditIcon />

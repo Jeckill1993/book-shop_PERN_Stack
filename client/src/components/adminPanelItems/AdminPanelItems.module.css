@@ -20,3 +20,16 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+.text {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        margin: 0 0 5px;
+        padding: 5px 15px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

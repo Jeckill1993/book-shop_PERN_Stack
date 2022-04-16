@@ -38,6 +38,44 @@
     margin-left: 40px;
 }
 
+.closeMenu {
+    display: none;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    cursor: pointer;
+    top: 32px;
+    right: 32px;
+}
+
+.closeMenu:before,
+.closeMenu:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: #14143d;
+}
+
+.closeMenu:before {
+    transform: rotate(45deg);
+}
+
+.closeMenu:after {
+    transform: rotate(-45deg);
+}
+
+.signBoxItem:nth-child(1) {
+    margin-left: 40px;
+}
+
+.signBoxItem:nth-child(2) {
+    margin-left: 10px;
+}
+
 @media screen and (max-width: 1200px) {
     .menuLink {
         margin-left: 20px;
@@ -51,16 +89,58 @@
 }
 
 @media screen and (max-width: 900px) {
+    .burgerBtnContainer,
+    .additionalMenu,
+    .menu,
+    .signBox,
+    .menuLink,
+    .closeMenu,
+    .signBoxItem {
+        display: block;
+    }
+
     .menu {
-        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s all;
+        background-color: #ffffff;
+        position: absolute;
+        z-index: 101;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        padding: 80px 0;
     }
 
     .menu.opened {
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
 
-    .burgerBtnContainer {
-        display: block;
+    .menuLink {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 20px 0;
+    }
+
+    .menuLink:hover {
+        background-color: #1E90FFFF;
+        color: #ffffff;
+    }
+
+    .btnContainer {
+        margin-left: 0;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .signBoxItem:nth-child(1),
+    .signBoxItem:nth-child(2) {
+        margin-left: 0;
+        margin-top: 40px;
+        text-align: center;
     }
 }
 
