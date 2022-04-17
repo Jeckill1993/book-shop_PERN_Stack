@@ -26,3 +26,14 @@
     align-items: center;
     cursor: pointer;
 }
+
+@media screen and (max-width: 900px) {
+    .listItem {
+        width: auto;
+        min-width: auto;
+        padding: 0 15px;
+        height: 40px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}

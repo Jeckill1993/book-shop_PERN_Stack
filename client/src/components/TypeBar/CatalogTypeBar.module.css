@@ -1,8 +1,8 @@
 
 .navigate {
-    width: 200px;
-    min-width: 200px;
-    padding: 60px 20px 40px;
+    width: 100%;
+    max-width: 200px;
+    padding: 40px 50px;
     height: 80vh;
     position: relative;
     background-color: #67a3b6;
@@ -17,10 +17,16 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 900px) {
+    .navigate {
+        padding: 20px 25px;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .navigate {
         padding: 10px;
-        width: 100%;
+        max-width: 100%;
         height: auto;
     }
 

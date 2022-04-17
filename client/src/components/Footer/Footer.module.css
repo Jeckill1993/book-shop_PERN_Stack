@@ -1,0 +1,19 @@
+
+.footer {
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 1px 30px 6px rgba(0,0,0,0.86);
+    box-shadow: 0 1px 30px 6px rgba(0,0,0,0.86);
+    padding: 40px 20px 10px;
+}
+
+.content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.infoBlock {
+    min-width: 250px;
+    margin: 0 25px 40px;
+}
