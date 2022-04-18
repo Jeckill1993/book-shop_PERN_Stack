@@ -38,8 +38,10 @@ const App = observer(() => {
   return (
       <BrowserRouter>
           <ThemeProvider theme={theme}>
-              <Header/>
-              <AppRouter />
+              <div>
+                  <Header/>
+                  <AppRouter/>
+              </div>
               <Footer/>
               { loading ? <Loading/>: '' }
           </ThemeProvider>
