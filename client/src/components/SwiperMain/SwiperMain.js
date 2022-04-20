@@ -4,7 +4,7 @@ import {CATALOG_ROUTE} from "../../utils/const";
 import classes from './SwiperMain.module.css';
 
 // import Swiper core and required modules
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import SwiperCore, { Pagination, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -27,26 +27,27 @@ const SwiperMain = () => {
     const slideImages = [slideImage1, slideImage2, slideImage3, slideImage4, slideImage5];
 
     return (
-        <Swiper className={classes.container}
-            // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={50}
-            slidesPerView={1}
-            autoplay={{ delay: 2000 }}
-            speed={2000}
-            effect="cube"
-            pagination={{ clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-        >
-            {
-                slideImages.map((image) => {
-                    return  <SwiperSlide>
-                                <NavLink className={classes.item} to={CATALOG_ROUTE}>
-                                    <img src={image} alt="slider image"/>
-                                </NavLink>
-                            </SwiperSlide>})
-            }
-        </Swiper>
+        <div className={classes.container}>
+            <Swiper
+                // install Swiper modules
+                modules={[Pagination, A11y]}
+                spaceBetween={50}
+                slidesPerView={1}
+                autoplay={{ delay: 2000 }}
+                speed={2000}
+                pagination={{ clickable: true }}
+            >
+                {
+                    slideImages.map((image) => {
+                        return  <SwiperSlide>
+                            <NavLink className={classes.item} to={CATALOG_ROUTE}>
+                                <img className={classes.image} src={image} alt="slider image"/>
+                            </NavLink>
+                        </SwiperSlide>})
+                }
+            </Swiper>
+        </div>
+
     );
 };
 

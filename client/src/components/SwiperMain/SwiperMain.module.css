@@ -1,6 +1,6 @@
 
 .title {
-    margin: 20px 0;
+    margin: 40px 0;
     text-align: center;
     font-size: 36px;
     line-height: 42px;
@@ -9,17 +9,38 @@
 }
 
 .container {
-    margin: 0 auto !important;
-    padding: 0 15px 80px !important;
-    width: 100% !important;
-    max-width: 1000px !important;
-    height: 600px !important;
-    max-height: 800px !important;
-    position: relative !important;
+    margin: 0 auto;
+    padding: 0 0 40px;
+    width: 100%;
+    max-width: 1150px;
+    position: relative;
 }
 
 .item {
     width: 100%;
+    height: 750px;
+    max-height: 750px;
+    padding: 0 0 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 100%;
     height: 100%;
-    min-height: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .item {
+        height: 550px;
+        max-height: 550px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .item {
+        height: 400px;
+        max-height: 400px;
+    }
 }
