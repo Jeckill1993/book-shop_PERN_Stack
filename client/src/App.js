@@ -7,7 +7,7 @@ import "./App.css";
 import {observer} from "mobx-react-lite";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "./index";
-import {checkAuth} from "./api/useAPI";
+import {checkAuth} from "./api/userAPI";
 import Loading from "./components/Loading/Loading";
 import {fetchBasket} from "./api/deviceAPI";
 import theme from "./utils/theme";
@@ -20,6 +20,7 @@ const App = observer(() => {
 
     useEffect(() => {
         checkAuth().then((data) => {
+            debugger;
             user.setUser(data);
             user.setIsAuth(true);
             if (data.role === 'ADMIN') {

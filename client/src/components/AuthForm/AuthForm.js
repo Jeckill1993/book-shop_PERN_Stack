@@ -2,7 +2,7 @@ import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../../utils/const";
 
 import classes from "./AuthForm.module.css";
-import {login, registration} from "../../api/useAPI";
+import {login, registration} from "../../api/userAPI";
 import {useContext, useState} from "react";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
