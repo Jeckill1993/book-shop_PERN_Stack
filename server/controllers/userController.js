@@ -1,11 +1,11 @@
 const ApiError = require('../error/ApiError');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User, Basket, Type} = require('../models/models');
+const { User, Basket } = require('../models/models');
 
-const generateJwt = (id, email, role) => {
+const generateJwt = (id, email, firstname, lastname, phone,  role) => {
     return jwt.sign(
-        { id, email, role },
+        { id, email, firstname, lastname, phone, role },
         process.env.SECRET_KEY,
         { expiresIn: '24h' },
     )
@@ -27,7 +27,7 @@ class UserController {
         const user = await User.create({ email, role, password: hashPassword, firstname, lastname, phone });
         const basket = await Basket.create({ userId: user.id });
 
-        const token = generateJwt(user.id, user.email, user.role, user.firstname, user.lastname, user.phone);
+        const token = generateJwt(user.id, user.email, user.firstname, user.lastname, user.phone, user.role);
 
         return res.json({ token });
     }
@@ -50,8 +50,9 @@ class UserController {
     }
 
     async checkAuth(req, res, next) {
-        const token = generateJwt(req.user.id, req.user.email, req.user.role,
-            req.user.firstname, req.user.lastname, req.user.phone);
+        const token = generateJwt(req.user.id, req.user.email, req.user.firstname, req.user.lastname,
+            req.user.phone, req.user.role);
+
         res.json({ token });
     }
 
@@ -60,7 +61,7 @@ class UserController {
 
         const hashPassword = await bcrypt.hash(password, 5);
         const user = await User.update({ email, role, password: hashPassword, firstname, lastname, phone },
-            { where: { id } });
+            { where: { id: id } });
 
         const token = generateJwt(user.id, user.email, user.role, user.firstname, user.lastname, user.phone);
 

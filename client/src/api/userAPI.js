@@ -22,7 +22,8 @@ export const checkAuth = async () => {
 
 export const updateUser = async (user) => {
     const { data } = await authHost.put('api/user', user);
-    return data;
+    localStorage.setItem('token', data.token);
+    return jwtDecode(data.token);
 }
 
 export const deleteUser = async (id) => {

@@ -20,7 +20,7 @@ const App = observer(() => {
 
     useEffect(() => {
         checkAuth().then((data) => {
-            debugger;
+            console.log(data);
             user.setUser(data);
             user.setIsAuth(true);
             if (data.role === 'ADMIN') {
