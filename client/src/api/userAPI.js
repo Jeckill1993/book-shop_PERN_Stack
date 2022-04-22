@@ -20,8 +20,8 @@ export const checkAuth = async () => {
     return jwtDecode(data.token);
 }
 
-export const updateUser = async (user) => {
-    const { data } = await authHost.put('api/user', user);
+export const updateUser = async ({ email, firstname, lastname, phone, role, password }) => {
+    const { data } = await host.put('api/user', { email, firstname, lastname, phone, role, password });
     localStorage.setItem('token', data.token);
     return jwtDecode(data.token);
 }

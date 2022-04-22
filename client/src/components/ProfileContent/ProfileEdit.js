@@ -3,15 +3,19 @@ import classes from "./ProfileContent.module.css";
 import {Button, TextField} from "@mui/material";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../../index";
-import {updateUser} from "../../api/userAPI";
+import {checkAuth, updateUser} from "../../api/userAPI";
+import ProfileModal from "./ProfileModal";
 
 const ProfileEdit = observer(({setIsEdit}) => {
     const {user} = useContext(Context);
+
+    const [isModal, setIsModal] = useState(false);
 
     const [email, setEmail] = useState('');
     const [firstname, setFirstName] = useState('');
     const [lastname, setLastName] = useState('');
     const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
 
     useEffect(() => {
         const userEmail = user.user.email ? user.user.email : '';
@@ -27,12 +31,12 @@ const ProfileEdit = observer(({setIsEdit}) => {
 
     const getFormData = () => {
         const formData = {
-            id: `${user.user.id}`,
             email: `${email}`,
             firstname: `${firstname}`,
             lastname: `${lastname}`,
             phone: `${phone}`,
-            role: `${user.user.role}`
+            role: `${user.user.role}`,
+            password: `${password}`,
         };
 
         return formData;
@@ -41,42 +45,54 @@ const ProfileEdit = observer(({setIsEdit}) => {
     const editHandler = () => {
         const userInfo = getFormData();
 
-        updateUser(userInfo).then((user) => {
-            user.setUser(user);
+        updateUser(userInfo).then((data) => {
+            user.setUser(data);
+            setIsEdit(false);
         });
-        setIsEdit(false);
+    }
+
+    const showHandler = () => {
+        setIsModal(true);
     }
 
     return (
-        <form>
-            <div className={classes.fieldset}>
-                <TextField sx={{width: '100%'}} label="Email:" variant="outlined" value={email}
-                           onChange={(e) => {
-                               setEmail(e.target.value)
-                           }}/>
-            </div>
-            <div className={classes.fieldset}>
-                <TextField sx={{width: '100%'}} label="First Name:" variant="outlined" value={firstname}
-                           onChange={(e) => {
-                               setFirstName(e.target.value)
-                           }}/>
-            </div>
-            <div className={classes.fieldset}>
-                <TextField sx={{width: '100%'}} label="Last Name:" variant="outlined" value={lastname}
-                           onChange={(e) => {
-                               setLastName(e.target.value)
-                           }}/>
-            </div>
-            <div className={classes.fieldset}>
-                <TextField sx={{width: '100%'}} label="Phone:" variant="outlined" value={phone}
-                           onChange={(e) => {
-                               setPhone(e.target.value)
-                           }}/>
-            </div>
-            <Button variant={'contained'} color={'success'} size={'large'} onClick={() => {
-                editHandler()
-            }}>Edit</Button>
-        </form>
+        <div>
+            <form>
+                <div className={classes.fieldset}>
+                    <TextField sx={{width: '100%'}} label="Email:" variant="outlined" value={email}
+                               onChange={(e) => {
+                                   setEmail(e.target.value)
+                               }}/>
+                </div>
+                <div className={classes.fieldset}>
+                    <TextField sx={{width: '100%'}} label="First Name:" variant="outlined" value={firstname}
+                               onChange={(e) => {
+                                   setFirstName(e.target.value)
+                               }}/>
+                </div>
+                <div className={classes.fieldset}>
+                    <TextField sx={{width: '100%'}} label="Last Name:" variant="outlined" value={lastname}
+                               onChange={(e) => {
+                                   setLastName(e.target.value)
+                               }}/>
+                </div>
+                <div className={classes.fieldset}>
+                    <TextField sx={{width: '100%'}} label="Phone:" variant="outlined" value={phone} type="tel"
+                               onChange={(e) => {
+                                   setPhone(e.target.value)
+                               }}/>
+                </div>
+                <Button variant={'contained'} color={'success'} size={'large'} onClick={() => {
+                    showHandler();
+                }}>Edit</Button>
+            </form>
+            {
+                isModal
+                    ? <ProfileModal password={password} setPassword={setPassword} editHandler={editHandler}
+                                    setIsModal={setIsModal}/>
+                    : ''
+            }
+        </div>
     )
 
 })

@@ -9,6 +9,7 @@ import classes from "../components/ProfileContent/ProfileContent.module.css";
 
 const Profile = observer(() => {
     const { user } = useContext(Context);
+
     const [isEdit, setIsEdit] = useState(false);
 
     useEffect(() => {
