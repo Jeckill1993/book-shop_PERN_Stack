@@ -18,9 +18,10 @@ const App = observer(() => {
     const { user } = useContext(Context);
     const [loading, setLoading] = useState(true);
 
+    const x = 1;
+
     useEffect(() => {
         checkAuth().then((data) => {
-            console.log(data);
             user.setUser(data);
             user.setIsAuth(true);
             if (data.role === 'ADMIN') {

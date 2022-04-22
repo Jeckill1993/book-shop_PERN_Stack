@@ -70,7 +70,17 @@
     z-index: 102;
 }
 
+@media screen and (max-width: 1200px) {
+    .container {
+        padding: 40px;
+    }
+}
+
 @media screen and (max-width: 600px) {
+    .container {
+        padding: 40px 20px;
+    }
+
     .modal {
         width: 290px;
         padding: 20px;
