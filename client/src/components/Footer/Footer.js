@@ -16,9 +16,9 @@ const Footer = () => {
                     <div className={classes.infoBlock}>
                         <h3>Our shops</h3>
                         <ul>
-                            <li><a target={'_blank'} href={'https://www.google.com/maps/place/Ocean+Plaza/@50.4124132,30.5201168,17z/data=!3m1!4b1!4m5!3m4!1s0x40d4cf3960fff74d:0x324a5854eb3f1a2b!8m2!3d50.4124132!4d30.5223055'}>
+                            <li><a target={'_blank'} href={'https://www.google.com/maps/place/Ocean+Plaza/@50.4124132,30.5201168,17z/data=!3m1!4b1!4m5!3m4!1s0x40d4cf3960fff74d:0x324a5854eb3f1a2b!8m2!3d50.4124132!4d30.5223055'} rel="noreferrer">
                                 Kiev, ul.Antonovicha 176</a></li>
-                            <li><a target={'_blank'} href={'https://www.google.com/maps/place/Gulliver+-+Palats+Sport+Metro/@50.4387279,30.5209839,17z/data=!3m1!4b1!4m5!3m4!1s0x40d4cefe0307e81f:0x1f234c3b0a0b492!8m2!3d50.4387279!4d30.5231726'}>
+                            <li><a target={'_blank'} href={'https://www.google.com/maps/place/Gulliver+-+Palats+Sport+Metro/@50.4387279,30.5209839,17z/data=!3m1!4b1!4m5!3m4!1s0x40d4cefe0307e81f:0x1f234c3b0a0b492!8m2!3d50.4387279!4d30.5231726'} rel="noreferrer">
                                 Kiev, Sport Square 1A</a></li>
                         </ul>
                     </div>
@@ -34,6 +34,6 @@ const Footer = () => {
             </div>
         </footer>
     );
-}
+};
 
 export default Footer;

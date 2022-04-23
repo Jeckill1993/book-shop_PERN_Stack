@@ -1,24 +1,27 @@
-import { BrowserRouter } from "react-router-dom";
-import AppRouter from "./components/AppRouter";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import { useContext, useEffect, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import { ThemeProvider } from '@mui/material';
 
-import "./App.css";
-import {observer} from "mobx-react-lite";
-import {useContext, useEffect, useState} from "react";
-import {Context} from "./index";
-import {checkAuth} from "./api/userAPI";
-import Loading from "./components/Loading/Loading";
-import {fetchBasket} from "./api/deviceAPI";
-import theme from "./utils/theme";
-import {ThemeProvider} from "@mui/material";
+import AppRouter from './components/AppRouter';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Loading from './components/Loading/Loading';
+
+import { checkAuth } from './api/userAPI';
+import { fetchBasket } from './api/deviceAPI';
+
+import theme from './utils/theme';
+
+import { Context } from './index';
+
+import './App.css';
+
 
 const App = observer(() => {
     const { basket } = useContext(Context);
     const { user } = useContext(Context);
     const [loading, setLoading] = useState(true);
-
-    const x = 1;
 
     useEffect(() => {
         checkAuth().then((data) => {
@@ -30,25 +33,25 @@ const App = observer(() => {
 
             fetchBasket(user.user.id).then((data) => {
                 basket.setBasket(data);
-            })
+            });
 
         }).finally(() => {
             setLoading(false);
-        })
-    }, []);
+        });
+    }, [user, basket]);
 
-  return (
-      <BrowserRouter>
-          <ThemeProvider theme={theme}>
-              <div>
-                  <Header/>
-                  <AppRouter/>
-              </div>
-              <Footer/>
-              { loading ? <Loading/>: '' }
-          </ThemeProvider>
-      </BrowserRouter>
-  );
-})
+    return (
+        <BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <div>
+                    <Header/>
+                    <AppRouter/>
+                </div>
+                <Footer/>
+                { loading ? <Loading/>: '' }
+            </ThemeProvider>
+        </BrowserRouter>
+    );
+});
 
 export default App;

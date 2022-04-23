@@ -1,9 +1,12 @@
-import classes from "./DeviceItem.module.css";
-import { useNavigate } from "react-router-dom";
-import {DEVICE_ROUTE} from "../../utils/const";
-import {addDeviceToBasket} from "../../api/deviceAPI";
-import {useContext} from "react";
-import {Context} from "../../index";
+import { useNavigate } from 'react-router-dom';
+
+import { useContext } from 'react';
+
+import { DEVICE_ROUTE } from '../../utils/const';
+import { addDeviceToBasket } from '../../api/deviceAPI';
+import { Context } from '../../index';
+
+import classes from './DeviceItem.module.css';
 
 const DeviceItem = ({ device }) => {
     const { basket } = useContext(Context);
@@ -18,15 +21,15 @@ const DeviceItem = ({ device }) => {
 
         addDeviceToBasket(formData).then((data) => {
             alert(device.name + 'was added to basket');
-        })
-    }
+        });
+    };
 
     return (
         <li className={classes.box}>
             <div className={classes.item} >
-                <div onClick={() => {navigate(DEVICE_ROUTE + '/' + device.id)}}>
+                <div onClick={() => {navigate(DEVICE_ROUTE + '/' + device.id);}}>
                     <div className={classes.image}>
-                        <img src={process.env.REACT_APP_CLIENT_API + device.img} />
+                        <img src={process.env.REACT_APP_CLIENT_API + device.img} alt={'device'} />
                     </div>
                     <div className={classes.info}>
                         <span className={classes.name}>{device.name}</span>
@@ -34,10 +37,10 @@ const DeviceItem = ({ device }) => {
                     </div>
                     <div>{device.rating}</div>
                 </div>
-                <button className={classes.btn} onClick={ () => {clickAdd(device)} }>Add to Basket</button>
+                <button className={classes.btn} onClick={ () => {clickAdd(device);} }>Add to Basket</button>
             </div>
         </li>
-    )
-}
+    );
+};
 
 export default DeviceItem;

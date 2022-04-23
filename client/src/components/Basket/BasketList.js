@@ -1,11 +1,14 @@
+import { useContext } from 'react';
+
+import { observer } from 'mobx-react-lite';
+
+import { Context } from '../../index';
+import { deleteDeviceFromBasket, fetchBasket } from '../../api/deviceAPI';
+
 import classes from './Basket.module.css';
-import {useContext} from "react";
-import {Context} from "../../index";
-import {observer} from "mobx-react-lite";
-import {deleteDeviceFromBasket, fetchBasket} from "../../api/deviceAPI";
 
 const BasketList = observer(() => {
-    const {basket} = useContext(Context);
+    const { basket } = useContext(Context);
 
     const devices = basket.basket.item;
 
@@ -13,13 +16,13 @@ const BasketList = observer(() => {
         deleteDeviceFromBasket(deviceId).then((data) => {
             fetchBasket(basket.basket.id).then((data) => {
                 basket.setBasket(data);
-            })
+            });
         });
-    }
+    };
 
     return (
         <div className={classes.container}>
-            <div className={"wrapper min"}>
+            <div className={'wrapper min'}>
                 { devices.length
                     ? <ul>
                         {devices.map((item) => {
@@ -29,9 +32,9 @@ const BasketList = observer(() => {
                                     <div className={classes.price}>{item.price}</div>
                                 </div>
                                 <button className={classes.btn} onClick={() => {
-                                    clickDelete(item.id)
+                                    clickDelete(item.id);
                                 }}/>
-                            </li>
+                            </li>;
                         })}
                     </ul>
                     : <p className={classes.emptyText}>Basket is empty</p>
@@ -39,7 +42,7 @@ const BasketList = observer(() => {
 
             </div>
         </div>
-    )
-})
+    );
+});
 
 export default BasketList;

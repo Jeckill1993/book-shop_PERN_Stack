@@ -1,8 +1,10 @@
-import classes from './CatalogTypeBar.module.css';
 
-import {observer} from "mobx-react-lite";
-import {useContext} from "react";
-import {Context} from "../../index";
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
+
+import { Context } from '../../index';
+
+import classes from './CatalogTypeBar.module.css';
 
 const CatalogTypeBar = observer(() => {
     const { device } = useContext(Context);
@@ -12,11 +14,11 @@ const CatalogTypeBar = observer(() => {
             <ul>
                 { device.types.map((type) => {
                     return <li className={classes.navigateItem} key={type.id}
-                               onClick={ () => {device.setSelectedType(type)} }> {type.name} </li>
+                        onClick={ () => {device.setSelectedType(type);} }> {type.name} </li>;
                 }) }
             </ul>
         </div>
     );
-})
+});
 
 export default CatalogTypeBar;

@@ -1,10 +1,10 @@
-import {makeAutoObservable} from "mobx";
+import { makeAutoObservable } from 'mobx';
 
 export default class UserStore {
     constructor() {
         this._isAuth = false; // this "_" means that variable can't be changed
         this._isAdmin = false;
-        this._user = {}
+        this._user = {};
         makeAutoObservable(this);
     }
 

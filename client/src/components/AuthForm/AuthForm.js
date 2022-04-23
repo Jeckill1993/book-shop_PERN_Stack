@@ -1,12 +1,16 @@
-import {NavLink, useLocation, useNavigate} from "react-router-dom";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../../utils/const";
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
-import classes from "./AuthForm.module.css";
-import {login, registration} from "../../api/userAPI";
-import {useContext, useState} from "react";
-import {observer} from "mobx-react-lite";
-import {Context} from "../../index";
-import {Button, TextField} from "@mui/material";
+
+import { useContext, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+
+import { Button, TextField } from '@mui/material';
+
+import { Context } from '../../index';
+import { login, registration } from '../../api/userAPI';
+import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../../utils/const';
+
+import classes from './AuthForm.module.css';
 
 const AuthForm = observer(() => {
     const { user } = useContext(Context);
@@ -22,9 +26,9 @@ const AuthForm = observer(() => {
         try {
             let data;
             if (isLogin) {
-                data = await login({email, password});
+                data = await login({ email, password });
             } else {
-                data = await registration({email, password});
+                data = await registration({ email, password });
             }
 
             user.setUser(data);
@@ -39,36 +43,36 @@ const AuthForm = observer(() => {
         }
 
 
-    }
+    };
 
     return (
         <div className={classes.container}>
             <h3 className={classes.title}>{isLogin ? 'Authorization' : 'Registration'}</h3>
             <div className={classes.fieldset}>
-                <TextField sx={{ width: '100%' }} label="Email" name={"email"} variant="outlined" value={ email }
-                           onChange={ (e) => {
-                               setEmail(e.target.value)} } />
+                <TextField sx={{ width: '100%' }} label="Email" name={'email'} variant="outlined" value={ email }
+                    onChange={ (e) => {
+                        setEmail(e.target.value);} } />
             </div>
             <div className={classes.fieldset}>
-                <TextField sx={{ width: '100%' }} label="Password" name={"password"} variant="outlined" value={ password }
-                           type="password" onChange={ (e) => {
-                               setPassword(e.target.value)} } />
+                <TextField sx={{ width: '100%' }} label="Password" name={'password'} variant="outlined" value={ password }
+                    type="password" onChange={ (e) => {
+                        setPassword(e.target.value);} } />
             </div>
             <div className={classes.row}>
-                <Button sx={{ width: '100%' }} variant={'contained'} color="dark" type={"button"}
-                        onClick={ () => { auth() } }>{ isLogin ? 'Enter' : 'Register' }</Button>
+                <Button sx={{ width: '100%' }} variant={'contained'} color="dark" type={'button'}
+                    onClick={ () => { auth(); } }>{ isLogin ? 'Enter' : 'Register' }</Button>
             </div>
             {isLogin
                 ? <div className={classes.botContainer}>
                     Don't you have account?
                     <NavLink className={classes.link} to={REGISTRATION_ROUTE}>Register</NavLink>
-                  </div>
+                </div>
                 : <div className={classes.botContainer}>
                     Have you already account?
                     <NavLink className={classes.link} to={LOGIN_ROUTE}>Login</NavLink>
-                  </div>}
+                </div>}
         </div>
     );
-})
+});
 
 export default AuthForm;

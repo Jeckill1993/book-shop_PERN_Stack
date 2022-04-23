@@ -10,9 +10,10 @@
     "jsx-quotes": ["warn", "prefer-double"],
     "indent": ["warn", 4],
     "semi": ["warn", "always"],
+    "object-curly-spacing": ["warn", "always"],
     "import/order": ["warn", {
       "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
-      "newline": "always-and-inside-groups"
+      "newlines-between": "always-and-inside-groups"
     }]
   }
 }

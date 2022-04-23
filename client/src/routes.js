@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom';
+
 import {
     ADMIN_ROUTE,
     BASKET_ROUTE, CATALOG_ROUTE,
@@ -6,17 +8,16 @@ import {
     LOGIN_ROUTE, PROFILE_ROUTE,
     REGISTRATION_ROUTE, SALES_ROUTE,
     SHOP_ROUTE
-} from "./utils/const";
-import { Navigate } from "react-router-dom";
+} from './utils/const';
 
-import AdminPanel from "./pages/AdminPanel";
-import Basket from "./pages/Basket";
-import Shop from "./pages/Shop";
-import DevicePage from "./pages/DevicePage";
-import Auth from "./pages/Auth";
-import Sales from "./pages/Sales";
-import Catalog from "./pages/Catalog";
-import Profile from "./pages/Profile";
+import AdminPanel from './pages/AdminPanel';
+import Basket from './pages/Basket';
+import Shop from './pages/Shop';
+import DevicePage from './pages/DevicePage';
+import Auth from './pages/Auth';
+import Sales from './pages/Sales';
+import Catalog from './pages/Catalog';
+import Profile from './pages/Profile';
 
 
 export const adminRoutes = [
@@ -24,7 +25,7 @@ export const adminRoutes = [
         path: ADMIN_ROUTE,
         component: <AdminPanel/>,
     },
-]
+];
 
 export const authRoutes = [
     {

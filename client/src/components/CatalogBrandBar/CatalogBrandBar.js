@@ -1,8 +1,10 @@
-import classes from './CatalogBrandBar.module.css';
 
-import {observer} from "mobx-react-lite";
-import {useContext} from "react";
-import {Context} from "../../index";
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
+
+import { Context } from '../../index';
+
+import classes from './CatalogBrandBar.module.css';
 
 const CatalogBrandBar = observer(() => {
     const { device } = useContext(Context);
@@ -12,11 +14,11 @@ const CatalogBrandBar = observer(() => {
             <ul className={classes.list}>
                 { device.brands.map((brand) => {
                     return <li className={classes.listItem} key={brand.id}
-                               onClick={ () => {device.setSelectedBrand(brand)} }> {brand.name} </li>
+                        onClick={ () => {device.setSelectedBrand(brand);} }> {brand.name} </li>;
                 }) }
             </ul>
         </div>
     );
-})
+});
 
 export default CatalogBrandBar;

@@ -1,13 +1,13 @@
-import classes from "./DeviceItem.module.css";
+import classes from './DeviceItem.module.css';
 
-const DevicePageItem = ({device}) => {
+const DevicePageItem = ({ device }) => {
 
     return (
         <div className={classes.devicePageItem}>
-            <div className={"wrapper min"}>
+            <div className={'wrapper min'}>
                 <div className={classes.devicePageInfo}>
                     <div className={classes.devicePageImage}>
-                        <img src={process.env.REACT_APP_CLIENT_API + device.img}/>
+                        <img src={process.env.REACT_APP_CLIENT_API + device.img} alt={'device'}/>
                     </div>
                     <div className={classes.devicePageText}>
                         <h1 className={classes.devicePageName}>{device.name}</h1>
@@ -21,12 +21,12 @@ const DevicePageItem = ({device}) => {
                         return <li>
                             <div>{option.title}</div>
                             <div>{option.description}</div>
-                        </li>
+                        </li>;
                     })}
                 </ul>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default DevicePageItem;

@@ -1,9 +1,12 @@
-import {NavLink} from "react-router-dom";
-import {SHOP_ROUTE} from "../../utils/const";
-import NavBar from "../NavBar/NavBar";
-import classes from "./Header.module.css";
+import { NavLink } from 'react-router-dom';
 
-import logo from "../../assets/img/logo.png";
+import { SHOP_ROUTE } from '../../utils/const';
+import NavBar from '../NavBar/NavBar';
+
+import logo from '../../assets/img/logo.png';
+
+import classes from './Header.module.css';
+
 
 const Header = () => {
     return (
@@ -18,6 +21,6 @@ const Header = () => {
             </div>
         </header>
     );
-}
+};
 
 export default Header;

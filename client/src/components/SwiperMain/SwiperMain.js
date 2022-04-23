@@ -1,11 +1,11 @@
 
-import {NavLink} from "react-router-dom";
-import {CATALOG_ROUTE} from "../../utils/const";
-import classes from './SwiperMain.module.css';
+import { NavLink } from 'react-router-dom';
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { CATALOG_ROUTE } from '../../utils/const';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -19,6 +19,8 @@ import slideImage2 from '../../assets/img/img-slide-2.jpg';
 import slideImage3 from '../../assets/img/img-slide-3.jpg';
 import slideImage4 from '../../assets/img/img-slide-4.jpg';
 import slideImage5 from '../../assets/img/img-slide-5.jpg';
+
+import classes from './SwiperMain.module.css';
 
 
 const SwiperMain = () => {
@@ -39,11 +41,11 @@ const SwiperMain = () => {
             >
                 {
                     slideImages.map((image) => {
-                        return  <SwiperSlide>
+                        return  <SwiperSlide key={image}>
                             <NavLink className={classes.item} to={CATALOG_ROUTE}>
-                                <img className={classes.image} src={image} alt="slider image"/>
+                                <img className={classes.image} src={image} alt="slide"/>
                             </NavLink>
-                        </SwiperSlide>})
+                        </SwiperSlide>;})
                 }
             </Swiper>
         </div>

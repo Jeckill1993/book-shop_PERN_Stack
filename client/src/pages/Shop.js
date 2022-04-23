@@ -1,4 +1,4 @@
-import SwiperMain from "../components/SwiperMain/SwiperMain";
+import SwiperMain from '../components/SwiperMain/SwiperMain';
 import classes from '../components/SwiperMain/SwiperMain.module.css';
 
 const Shop = () => {
@@ -8,6 +8,6 @@ const Shop = () => {
             <SwiperMain/>
         </div>
     );
-}
+};
 
 export default Shop;

@@ -5,6 +5,6 @@ const Sales = () => {
             <h1>Sales</h1>
         </div>
     );
-}
+};
 
 export default Sales;

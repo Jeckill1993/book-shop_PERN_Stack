@@ -1,13 +1,16 @@
-import {observer} from "mobx-react-lite";
+import { observer } from 'mobx-react-lite';
 
-import classes from "./ProfileContent.module.css";
-import {useContext} from "react";
-import {Context} from "../../index";
-import EditIcon from "@mui/icons-material/Edit";
-import {IconButton} from "@mui/material";
+import { useContext } from 'react';
+
+import EditIcon from '@mui/icons-material/Edit';
+import { IconButton } from '@mui/material';
+
+import { Context } from '../../index';
+
+import classes from './ProfileContent.module.css';
 
 const ProfileInfo = observer(( { setIsEdit } ) => {
-    const {user} = useContext(Context);
+    const { user } = useContext(Context);
 
     return (
         <div className={classes.infoBox}>
@@ -28,19 +31,19 @@ const ProfileInfo = observer(( { setIsEdit } ) => {
             <div className={classes.text}>
                 <span className={classes.label}>Phone:</span>
                 <p className={classes.info}>{user.user.phone ? user.user.phone
-                : 'Click button "Edit" for add you phone'}</p>
+                    : 'Click button "Edit" for add you phone'}</p>
             </div>
             <div className={classes.text}>
                 <span className={classes.label}>Your orders:</span>
                 <p className={classes.info}>No one order yet</p>
             </div>
             <div className={classes.btnBox}>
-                <IconButton aria-label="edit" color="dark" onClick={() => { setIsEdit(true) }}>
+                <IconButton aria-label="edit" color="dark" onClick={() => { setIsEdit(true); }}>
                     <EditIcon />
                 </IconButton>
             </div>
         </div>
-    )
-})
+    );
+});
 
 export default ProfileInfo;

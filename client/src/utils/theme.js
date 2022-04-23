@@ -7,6 +7,6 @@ const theme = createTheme({
             contrastText: '#fff',
         },
     }
-})
+});
 
 export default theme;

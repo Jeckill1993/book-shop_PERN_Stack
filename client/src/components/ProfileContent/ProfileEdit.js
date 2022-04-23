@@ -1,13 +1,16 @@
-import {observer} from "mobx-react-lite";
-import classes from "./ProfileContent.module.css";
-import {Button, TextField} from "@mui/material";
-import {useContext, useEffect, useState} from "react";
-import {Context} from "../../index";
-import {checkAuth, updateUser} from "../../api/userAPI";
-import ProfileModal from "./ProfileModal";
+import { observer } from 'mobx-react-lite';
 
-const ProfileEdit = observer(({setIsEdit}) => {
-    const {user} = useContext(Context);
+import { Button, TextField } from '@mui/material';
+import { useContext, useEffect, useState } from 'react';
+
+import { Context } from '../../index';
+import { updateUser } from '../../api/userAPI';
+
+import classes from './ProfileContent.module.css';
+import ProfileModal from './ProfileModal';
+
+const ProfileEdit = observer(({ setIsEdit }) => {
+    const { user } = useContext(Context);
 
     const [isModal, setIsModal] = useState(false);
 
@@ -27,7 +30,7 @@ const ProfileEdit = observer(({setIsEdit}) => {
         setFirstName(userFirstName);
         setLastName(userLastName);
         setPhone(userPhone);
-    }, []);
+    }, [user.user.email, user.user.firstname, user.user.lastname, user.user.phone]);
 
     const getFormData = () => {
         const formData = {
@@ -40,7 +43,7 @@ const ProfileEdit = observer(({setIsEdit}) => {
         };
 
         return formData;
-    }
+    };
 
     const editHandler = () => {
         const userInfo = getFormData();
@@ -49,38 +52,38 @@ const ProfileEdit = observer(({setIsEdit}) => {
             user.setUser(data);
             setIsEdit(false);
         });
-    }
+    };
 
     const showHandler = () => {
         setIsModal(true);
-    }
+    };
 
     return (
         <div>
             <form>
                 <div className={classes.fieldset}>
-                    <TextField sx={{width: '100%'}} label="Email:" variant="outlined" value={email}
-                               onChange={(e) => {
-                                   setEmail(e.target.value)
-                               }}/>
+                    <TextField sx={{ width: '100%' }} label="Email:" variant="outlined" value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                        }}/>
                 </div>
                 <div className={classes.fieldset}>
-                    <TextField sx={{width: '100%'}} label="First Name:" variant="outlined" value={firstname}
-                               onChange={(e) => {
-                                   setFirstName(e.target.value)
-                               }}/>
+                    <TextField sx={{ width: '100%' }} label="First Name:" variant="outlined" value={firstname}
+                        onChange={(e) => {
+                            setFirstName(e.target.value);
+                        }}/>
                 </div>
                 <div className={classes.fieldset}>
-                    <TextField sx={{width: '100%'}} label="Last Name:" variant="outlined" value={lastname}
-                               onChange={(e) => {
-                                   setLastName(e.target.value)
-                               }}/>
+                    <TextField sx={{ width: '100%' }} label="Last Name:" variant="outlined" value={lastname}
+                        onChange={(e) => {
+                            setLastName(e.target.value);
+                        }}/>
                 </div>
                 <div className={classes.fieldset}>
-                    <TextField sx={{width: '100%'}} label="Phone:" variant="outlined" value={phone} type="tel"
-                               onChange={(e) => {
-                                   setPhone(e.target.value)
-                               }}/>
+                    <TextField sx={{ width: '100%' }} label="Phone:" variant="outlined" value={phone} type="tel"
+                        onChange={(e) => {
+                            setPhone(e.target.value);
+                        }}/>
                 </div>
                 <Button variant={'contained'} color={'success'} size={'large'} onClick={() => {
                     showHandler();
@@ -89,12 +92,12 @@ const ProfileEdit = observer(({setIsEdit}) => {
             {
                 isModal
                     ? <ProfileModal password={password} setPassword={setPassword} editHandler={editHandler}
-                                    setIsModal={setIsModal}/>
+                        setIsModal={setIsModal}/>
                     : ''
             }
         </div>
-    )
+    );
 
-})
+});
 
 export default ProfileEdit;
