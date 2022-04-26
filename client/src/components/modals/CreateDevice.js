@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 
 import { observer } from 'mobx-react-lite';
-import { Button, IconButton, Input, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Button, IconButton, Input, InputLabel, MenuItem, Select, TextField, Checkbox } from '@mui/material';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -15,6 +15,8 @@ const CreateDevice = observer(({ onHide, isEdit }) => {
 
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
+    const [isSale, setIsSale] = useState(false);
+    const [salePrice, setSalePrice] = useState(0);
     const [file, setFile] = useState(null);
     const [brandId, setBrandId] = useState(0);
     const [typeId, setTypeId] = useState(0);
@@ -110,6 +112,23 @@ const CreateDevice = observer(({ onHide, isEdit }) => {
                                     setPrice(parseInt(e.target.value));
                                 }}/>
                         </div>
+                    </div>
+                    <div className={classes.row}>
+                        <div className={classes.fieldset}>
+                            <Checkbox checked={isSale} onChange={(e) => {
+                                setIsSale(e.target.checked);
+                            }}/>
+                        </div>
+                        {
+                            isSale 
+                                ? <div className={classes.fieldset}>
+                                    <TextField sx={{ width: '100%' }} label="Sale Price:" variant="outlined" value={salePrice}
+                                        onChange={(e) => {
+                                            setSalePrice(e.target.value);}}/>
+                                </div>
+                                : ''
+                        }
+                        
                     </div>
                     <label htmlFor="icon-button-file">
                         <Input sx={{ display: 'none' }} accept="image/*" id="icon-button-file" type="file"
