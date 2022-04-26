@@ -55,6 +55,15 @@ const Device = sequelize.define('device', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    isSale: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
+    priceSale: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     rating: {
         type: DataTypes.INTEGER,
         defaultValue: 0

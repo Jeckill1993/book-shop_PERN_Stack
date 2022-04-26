@@ -16,7 +16,7 @@ const CreateDevice = observer(({ onHide, isEdit }) => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [isSale, setIsSale] = useState(false);
-    const [salePrice, setSalePrice] = useState(0);
+    const [priceSale, setPriceSale] = useState(0);
     const [file, setFile] = useState(null);
     const [brandId, setBrandId] = useState(0);
     const [typeId, setTypeId] = useState(0);
@@ -40,6 +40,8 @@ const CreateDevice = observer(({ onHide, isEdit }) => {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('price', `${price}`);
+        formData.append('isSale', `${isSale}`);
+        formData.append('priceSale', `${priceSale}`);
         formData.append('img', file);
         formData.append('brandId', `${brandId}`);
         formData.append('typeId', `${typeId}`);
@@ -122,9 +124,9 @@ const CreateDevice = observer(({ onHide, isEdit }) => {
                         {
                             isSale 
                                 ? <div className={classes.fieldset}>
-                                    <TextField sx={{ width: '100%' }} label="Sale Price:" variant="outlined" value={salePrice}
+                                    <TextField sx={{ width: '100%' }} label="Sale Price:" variant="outlined" value={priceSale}
                                         onChange={(e) => {
-                                            setSalePrice(e.target.value);}}/>
+                                            setPriceSale(e.target.value);}}/>
                                 </div>
                                 : ''
                         }

@@ -34,6 +34,11 @@ const DeviceItem = ({ device }) => {
                     <div className={classes.info}>
                         <span className={classes.name}>{device.name}</span>
                         <span className={classes.price}>{device.price}</span>
+                        {
+                            device.isSale
+                                ? <span className={classes.price}>{device.priceSale}</span>
+                                : ''
+                        }
                     </div>
                     <div>{device.rating}</div>
                 </div>
