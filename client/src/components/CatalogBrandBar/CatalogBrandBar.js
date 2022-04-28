@@ -1,13 +1,6 @@
-
-import { observer } from 'mobx-react-lite';
-import { useContext } from 'react';
-
-import { Context } from '../../index';
-
 import classes from './CatalogBrandBar.module.css';
 
-const CatalogBrandBar = observer(() => {
-    const { device } = useContext(Context);
+const CatalogBrandBar = ({ device }) => {
 
     return (
         <div className={classes.bar}>
@@ -19,6 +12,6 @@ const CatalogBrandBar = observer(() => {
             </ul>
         </div>
     );
-});
+};
 
 export default CatalogBrandBar;

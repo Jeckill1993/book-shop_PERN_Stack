@@ -64,6 +64,13 @@ export const fetchDevices = async (typeId, brandId, page, limit) => {
     return data;
 };
 
+export const fetchSaleDevices = async (page, limit) => {
+    const { data } = await host.get('api/device/sale', { params: {
+        page, limit
+    } } );
+    return data;
+};
+
 export const fetchOneDevice = async (id) => {
     const { data } = await host.get('api/device/' + id);
     return data;

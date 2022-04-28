@@ -94,6 +94,20 @@ class DeviceController {
         return res.json(devices);
     }
 
+    async getSaleAll(req, res) {
+        let { limit, page } = req.query;
+        let devices;
+
+        page = page || 1;
+        limit = limit || 9;
+        let offset = page * limit - limit;
+        let isSale = true;
+
+        devices = await Device.findAndCountAll({ where: { isSale }, limit, offset });
+
+        return res.json(devices);
+    }
+
     async getOne(req, res) {
         const { id } = req.params; //the id we use in deviceRouter on get-request with /:id
         const device = await Device.findOne({

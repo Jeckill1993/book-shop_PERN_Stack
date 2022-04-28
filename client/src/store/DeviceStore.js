@@ -5,6 +5,7 @@ export default class DeviceStore {
         this._types = [];
         this._brands = [];
         this._devices = [];
+        this._saleDevices = [];
         this._selectedType = {};
         this._selectedBrand = {};
         this._selectedDevice = {};
@@ -22,6 +23,9 @@ export default class DeviceStore {
     }
     setDevices(devices) {
         this._devices = devices;
+    }
+    setSaleDevices(saleDevices) {
+        this._saleDevices = saleDevices;
     }
     setSelectedType(type) {
         this.setPage(1);
@@ -52,6 +56,9 @@ export default class DeviceStore {
     }
     get devices() {
         return this._devices;
+    }
+    get saleDevices() {
+        return this._saleDevices;
     }
     get selectedType() {
         return this._selectedType;

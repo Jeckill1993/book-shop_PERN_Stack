@@ -1,13 +1,7 @@
-import { useContext } from 'react';
-
-import { observer } from 'mobx-react-lite';
-
-import { Context } from '../../index';
 
 import classes from './Pagination.module.css';
 
-const Pagination = observer(() => {
-    const { device } = useContext(Context);
+const Pagination = ({ device }) => {
     const pageCount = Math.ceil(device.totalCount / device.limit);
     const pages = [];
 
@@ -26,6 +20,6 @@ const Pagination = observer(() => {
             }
         </div>
     );
-});
+};
 
 export default Pagination;
