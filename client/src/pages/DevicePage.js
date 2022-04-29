@@ -6,7 +6,7 @@ import { fetchOneDevice } from '../api/deviceAPI';
 import DevicePageItem from '../components/DeviceItem/DevicePageItem';
 
 const DevicePage = observer(() => {
-    const [device, setDevice] = useState({ info: [] });
+    const [device, setDevice] = useState({ info: [], review: [] });
     const { id } = useParams();
 
     useEffect(() => {

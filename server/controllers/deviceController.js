@@ -1,4 +1,4 @@
-const { Device, DeviceInfo, Type} = require('../models/models');
+const { Device, DeviceInfo, DeviceReviews} = require('../models/models');
 const ApiError = require('../error/ApiError');
 const uuid = require('uuid');  //npm i uuid, this generates random id
 const path = require('path');
@@ -112,7 +112,10 @@ class DeviceController {
         const { id } = req.params; //the id we use in deviceRouter on get-request with /:id
         const device = await Device.findOne({
             where: { id },
-            include: [{ model: DeviceInfo, as: 'info' }]
+            include: [
+                { model: DeviceInfo, as: 'info' },
+                { model: DeviceReviews, as: 'review' }
+            ]
         });
 
         return res.json(device);

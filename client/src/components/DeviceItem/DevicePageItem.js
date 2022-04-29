@@ -21,9 +21,10 @@ const DevicePageItem = ({ device }) => {
                     <h2>Device's Information</h2>
                     <ul className={classes.devicePageDescription}>
                         {device.info.map((option) => {
-                            return <li>
-                                <div>{option.title}</div>
-                                <div>{option.description}</div>
+                            const { title, description } = option;
+                            return <li key={title}>
+                                <div>{title}</div>
+                                <div>{description}</div>
                             </li>;
                         })}
                     </ul>
@@ -31,9 +32,9 @@ const DevicePageItem = ({ device }) => {
                 <div>
                     <h2>Reviews</h2>
                     <ul className={classes.reviewsList}>
-                        {device.reviews.map((review) => {
-                            const { author, text, rating } = review;
-                            return <li>
+                        {device.review.map((item) => {
+                            const { author, text, rating } = item;
+                            return <li key={text}>
                                 <div className={classes.reviewAuthor}>
                                     <div className={classes.reviewImage}>
                                         <img src="" alt=""/>
@@ -44,7 +45,7 @@ const DevicePageItem = ({ device }) => {
                                     <p className={classes.reviewText}>{text}</p>
                                     <span>{rating}</span>
                                 </div>
-                            </li>
+                            </li>;
                         })}
                     </ul>
                 </div>
