@@ -14,16 +14,40 @@ const DevicePageItem = ({ device }) => {
                         <div className={classes.devicePagePrice}><span>Price - </span>{device.price}</div>
                         <div>{device.rating}</div>
                         <button className={classes.devicePageBtn}>Add to Basket</button>
+
                     </div>
                 </div>
-                <ul className={classes.devicePageDescription}>
-                    {device.info.map((option) => {
-                        return <li>
-                            <div>{option.title}</div>
-                            <div>{option.description}</div>
-                        </li>;
-                    })}
-                </ul>
+                <div>
+                    <h2>Device's Information</h2>
+                    <ul className={classes.devicePageDescription}>
+                        {device.info.map((option) => {
+                            return <li>
+                                <div>{option.title}</div>
+                                <div>{option.description}</div>
+                            </li>;
+                        })}
+                    </ul>
+                </div>
+                <div>
+                    <h2>Reviews</h2>
+                    <ul className={classes.reviewsList}>
+                        {device.reviews.map((review) => {
+                            const { author, text, rating } = review;
+                            return <li>
+                                <div className={classes.reviewAuthor}>
+                                    <div className={classes.reviewImage}>
+                                        <img src="" alt=""/>
+                                        <span>{author}</span>
+                                    </div>
+                                </div>
+                                <div className={classes.reviewInfo}>
+                                    <p className={classes.reviewText}>{text}</p>
+                                    <span>{rating}</span>
+                                </div>
+                            </li>
+                        })}
+                    </ul>
+                </div>
             </div>
         </div>
     );
