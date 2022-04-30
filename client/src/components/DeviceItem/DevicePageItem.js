@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { Button, TextareaAutosize, TextField } from '@mui/material';
+
+import { addReviewOfDevice } from '../../api/deviceAPI';
+
+import { Context } from '../../index';
 
 import classes from './DeviceItem.module.css';
 
 
 
 const DevicePageItem = ({ device }) => {
+    const { user } = useContext(Context);
+    const { id } = useParams();
+
+    const userId = user.user.id;
     
     const [isOpen, setIsOpen] = useState(false);
     
@@ -16,8 +25,14 @@ const DevicePageItem = ({ device }) => {
     function submitHandler() {
         const formData = {
             'rating': `${rating}`,
-            'description': `${description}`
+            'description': `${description}`,
+            'deviceId': `${id}`,
+            'userId': `${userId}`,
         };
+
+        addReviewOfDevice(formData).then((data) => {
+            setIsOpen(false);
+        });
     }
 
     return (
@@ -49,19 +64,19 @@ const DevicePageItem = ({ device }) => {
                 </div>
                 <div>
                     <h2>Reviews</h2>
-                    <div>
+                    <div className={classes.row}>
                         <ul className={classes.reviewsList}>
                             {device.review.map((item) => {
-                                const { author, text, rating } = item;
-                                return <li key={text}>
+                                const { userId, description, rating } = item;
+                                return <li key={userId} className={classes.reviewItem}>
                                     <div className={classes.reviewAuthor}>
                                         <div className={classes.reviewImage}>
                                             <img src="" alt=""/>
-                                            <span>{author}</span>
                                         </div>
+                                        <span>{userId}</span>
                                     </div>
-                                    <div className={classes.reviewInfo}>
-                                        <p className={classes.reviewText}>{text}</p>
+                                    <div>
+                                        <p className={classes.reviewText}>{description}</p>
                                         <span>{rating}</span>
                                     </div>
                                 </li>;
@@ -69,12 +84,11 @@ const DevicePageItem = ({ device }) => {
                         </ul>
                         <p onClick={() => { setIsOpen(true); }}>Send review about the product</p>
                     </div>
-
                 </div>
             </div>
             {isOpen
                 ? <div className={classes.modal}>
-                    <div className={classes.overlay} />
+                    <div className={classes.overlay} onClick={() => { setIsOpen(false); }} />
                     <div className={classes.window}>
                         <form>
                             <div className={classes.fieldsetFull}>

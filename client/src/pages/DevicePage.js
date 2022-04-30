@@ -11,6 +11,7 @@ const DevicePage = observer(() => {
 
     useEffect(() => {
         fetchOneDevice(id).then((data) => {
+            console.log(data);
             setDevice(data);
         });
     }, [id]);

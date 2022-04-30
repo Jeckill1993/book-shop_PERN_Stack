@@ -59,6 +59,18 @@ class DeviceController {
         }
     }
 
+    async addReview(req, res, next) {
+        try {
+            let { rating, description, deviceId, userId } = req.body;
+
+            const review = await DeviceReviews.create({ rating, description, deviceId, userId })
+
+            return res.json(review);
+        } catch (err) {
+            next(ApiError.internal(err.message));
+        }
+    }
+
     async delete(req, res, next) {
         try {
             const { id } = req.params;

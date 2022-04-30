@@ -1,4 +1,10 @@
 
+.row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .box {
     width: 25%;
     min-width: 250px;
@@ -91,4 +97,46 @@
 
 .devicePageDescription {
     margin: 50px 0 0;
+}
+
+.reviewsList {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 40px 0 0;
+}
+
+.reviewItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #acbac7;
+    margin: 0 0 40px;
+}
+
+.reviewAuthor {
+    width: 80px;
+    min-width: 80px;
+    padding: 0 20px;
+    margin: 0 20px 0 0;
+}
+
+.reviewImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #14143d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewText {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 10px 0 0;
+    color: #14143d;
 }

@@ -52,6 +52,11 @@ export const updateDevice = async (device) => {
     return data;
 };
 
+export const addReviewOfDevice = async (review) => {
+    const { data } = await authHost.post('api/device/review', review);
+    return data;
+};
+
 export const deleteDevice = async (id) => {
     const { data } = await authHost.delete('api/device/' + id);
     return data;
