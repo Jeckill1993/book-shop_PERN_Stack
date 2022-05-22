@@ -29,7 +29,7 @@ const DeviceItem = ({ device }) => {
             <div className={classes.item} >
                 <div onClick={() => {navigate(DEVICE_ROUTE + '/' + device.id);}}>
                     <div className={classes.image}>
-                        <img src={process.env.REACT_APP_CLIENT_API + device.img} alt={'device'} />
+                        <img src={process.env.VERCEL_APP_CLIENT_API + device.img} alt={'device'} />
                     </div>
                     <div className={classes.info}>
                         <span className={classes.name}>{device.name}</span>

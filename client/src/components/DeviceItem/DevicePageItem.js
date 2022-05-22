@@ -40,7 +40,7 @@ const DevicePageItem = ({ device }) => {
             <div className={'wrapper min'}>
                 <div className={classes.devicePageInfo}>
                     <div className={classes.devicePageImage}>
-                        <img src={process.env.REACT_APP_CLIENT_API + device.img} alt={'device'}/>
+                        <img src={process.env.VERCEL_APP_CLIENT_API + device.img} alt={'device'}/>
                     </div>
                     <div className={classes.devicePageText}>
                         <h1 className={classes.devicePageName}>{device.name}</h1>
